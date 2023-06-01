@@ -1,0 +1,42 @@
+import 'package:flutter/material.dart';
+import 'package:istad_project_ecommerce/views/all_product/all_product.dart';
+ 
+  
+
+class SectionTitle extends StatelessWidget {
+  const SectionTitle({
+    Key? key,
+    required this.title,
+    required this.pressSeeAll,
+  }) : super(key: key);
+  final String title;
+  final VoidCallback pressSeeAll;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Text(
+          title,
+          style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                color: Colors.black,
+                fontWeight: FontWeight.w500,
+              ),
+        ),
+        TextButton(
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const AllProduct()),
+            );
+          },
+          child: const Text(
+            "See All",
+            style: TextStyle(color: Colors.black54),
+          ),
+        )
+      ],
+    );
+  }
+}
