@@ -85,7 +85,7 @@ class _ComfirmPasswordPageState extends State<ComfirmPasswordPage> {
                   height: 60,
                   child: Center(
                     child: Text(
-                      'SingIn',
+                      'SigIn',
                       style:
                           TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                     ),

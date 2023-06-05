@@ -1,4 +1,3 @@
- 
 import 'package:flutter/material.dart';
 
 class DrawerPage extends StatelessWidget {
@@ -47,21 +46,30 @@ class DrawerPage extends StatelessWidget {
                               ),
                               Text(
                                 'Elay',
-                                style: TextStyle(color: Colors.black),
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
                               SizedBox(
                                 height: 10,
                               ),
                               Text(
                                 'Kak',
-                                style: TextStyle(color: Colors.black),
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
                               SizedBox(
                                 height: 10,
                               ),
                               Text(
                                 'Id: 485887',
-                                style: TextStyle(color: Colors.black),
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
                             ],
                           ),
@@ -79,46 +87,33 @@ class DrawerPage extends StatelessWidget {
               color: Colors.black,
             ),
             title: const Text(
-              'ទូទាត់ការវិភាគ',
+              'Payment',
               style: TextStyle(color: Colors.black),
             ),
             onTap: () {
               Navigator.pop(context);
             },
           ),
-          ListTile(
-            leading: const Icon(
-              Icons.list,
-              color: Colors.black,
-            ),
-            title: const Text(
-              'មូលប្បទានបត្រ',
-              style: TextStyle(color: Colors.black),
-            ),
-            onTap: () {
-              Navigator.pop(context);
-            },
-          ),
+          // ListTile(
+          //   leading: const Icon(
+          //     Icons.list,
+          //     color: Colors.black,
+          //   ),
+          //   title: const Text(
+          //     'មូលប្បទានបត្រ',
+          //     style: TextStyle(color: Colors.black),
+          //   ),
+          //   onTap: () {
+          //     Navigator.pop(context);
+          //   },
+          // ),
           ListTile(
             leading: const Icon(
               Icons.location_on,
               color: Colors.black,
             ),
             title: const Text(
-              'កន្លែងទូទាត់តាម ABA PAY',
-              style: TextStyle(color: Colors.black),
-            ),
-            onTap: () {
-              Navigator.pop(context);
-            },
-          ),
-          ListTile(
-            leading: const Icon(
-              Icons.control_point_duplicate_outlined,
-              color: Colors.black,
-            ),
-            title: const Text(
-              'អត្រាប្ដូរប្រាក់',
+              'Texas Center',
               style: TextStyle(color: Colors.black),
             ),
             onTap: () {
@@ -131,7 +126,7 @@ class DrawerPage extends StatelessWidget {
               color: Colors.black,
             ),
             title: const Text(
-              'ទីតាំង ABA',
+              'Texas Partner',
               style: TextStyle(color: Colors.black),
             ),
             onTap: () {
@@ -144,7 +139,7 @@ class DrawerPage extends StatelessWidget {
               color: Colors.black,
             ),
             title: const Text(
-              'ណែនាំមិត្តភក្កិ',
+              'Invite freined',
               style: TextStyle(color: Colors.black),
             ),
             onTap: () {
@@ -157,7 +152,7 @@ class DrawerPage extends StatelessWidget {
               color: Colors.black,
             ),
             title: const Text(
-              'ទាក់ទងមកយើងខ្ញុំ',
+              'Contact Us',
               style: TextStyle(color: Colors.black),
             ),
             onTap: () {
@@ -170,7 +165,7 @@ class DrawerPage extends StatelessWidget {
               color: Colors.black,
             ),
             title: const Text(
-              'លក្ខខណ្ឌ',
+              'Condition',
               style: TextStyle(color: Colors.black),
             ),
             onTap: () {
@@ -183,7 +178,7 @@ class DrawerPage extends StatelessWidget {
               color: Colors.black,
             ),
             title: const Text(
-              'ការកំណត់ផ្សេងៗ',
+              'Settings',
               style: TextStyle(color: Colors.black),
             ),
             onTap: () {
