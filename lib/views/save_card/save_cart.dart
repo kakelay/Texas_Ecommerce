@@ -66,7 +66,7 @@ class _SaveCartScreenState extends State<SaveCartScreen> {
                         margin: const EdgeInsets.all(5),
                         padding: const EdgeInsets.all(5),
                         decoration: BoxDecoration(
-                          color: const Color.fromARGB(255, 223, 223, 223)
+                          color: Color.fromARGB(255, 240, 238, 238)
                               .withOpacity(0.5),
                           borderRadius: const BorderRadius.all(
                             Radius.circular(25),

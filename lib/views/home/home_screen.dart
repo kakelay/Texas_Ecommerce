@@ -165,8 +165,19 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
 
       // Body
-      body: _pages[_selectedIndex],
+      body: NotificationListener<OverscrollIndicatorNotification>(
+        onNotification: (overScroll) {
+          overScroll.disallowIndicator();
+          return true;
+        },
+        child: CustomScrollView(
+          slivers: [
+            _pages[_selectedIndex],
+          ],
+        ),
+      ),
       drawer: const DrawerPage(),
     );
   }
+  
 }

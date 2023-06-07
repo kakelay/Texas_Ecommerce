@@ -39,159 +39,161 @@ class _PersonalButtonState extends State<PersonalButton> {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Form(
-          key: formKey,
-          // ignore: avoid_unnecessary_containers
-          child: Container(
-            child: Column(
-              // mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                const Text(
-                  "EXSITING CUSTOMER",
-                  style: TextStyle(
-                    fontSize: 35,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black,
-                  ),
-                ),
-                const SizedBox(
-                  height: defaulHighSizeBox,
-                ),
-
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: IntlPhoneField(
-                    decoration: const InputDecoration(
-                      labelText: 'Phone Number',
-                      border: OutlineInputBorder(
-                        borderSide: BorderSide(),
-                      ),
-                    ),
-                    initialCountryCode: 'KH',
-                    onChanged: (phone) {
-                      print(phone.completeNumber);
-                    },
-                  ),
-                ),
-
-                ///  text new update
-                const SizedBox(
-                  height: defaulHighSizeBox,
-                ),
-
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: TextFormField(
-                    obscureText: _isObscure,
-                    decoration: InputDecoration(
-                      labelText: 'Password',
-                      hintText: "Password",
-                      border: const OutlineInputBorder(
-                        borderSide: BorderSide(),
-                      ),
-                      suffixIcon: IconButton(
-                        icon: Icon(_isObscure
-                            ? Icons.visibility
-                            : Icons.visibility_off),
-                        onPressed: () {
-                          setState(() {
-                            _isObscure = !_isObscure;
-                          });
-                        },
-                      ),
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  height: defaulHighSizeBox * 3.5,
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const MyHomePage(title: ""),
-                      ),
-                    );
-                  },
-                  style:
-                      ElevatedButton.styleFrom(backgroundColor: Colors.black),
-                  child: const SizedBox(
-                    width: 400,
-                    height: 60,
-                    child: Center(
-                      child: Text(
-                        'LOG IN',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 20),
-                      ),
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  height: defaulHighSizeBox,
-                ),
-                TextButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const ForgetPasswordPage()),
-                    );
-                  },
-                  child: const Text(
-                    'Forget password?',
+    return SliverToBoxAdapter(
+      child: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Form(
+            key: formKey,
+            // ignore: avoid_unnecessary_containers
+            child: Container(
+              child: Column(
+                // mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  const Text(
+                    "EXSITING CUSTOMER",
                     style: TextStyle(
+                      fontSize: 35,
+                      fontWeight: FontWeight.bold,
                       color: Colors.black,
                     ),
                   ),
-                ),
-                const SizedBox(
-                  height: defaulHighSizeBox,
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const RegisterPage()),
-                    );
-                  },
-                  style:
-                      ElevatedButton.styleFrom(backgroundColor: Colors.black),
-                  child: const SizedBox(
-                    width: 400,
-                    height: 60,
-                    child: Center(
-                      child: Text(
-                        'REGISTER',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 20),
+                  const SizedBox(
+                    height: defaulHighSizeBox,
+                  ),
+    
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: IntlPhoneField(
+                      decoration: const InputDecoration(
+                        labelText: 'Phone Number',
+                        border: OutlineInputBorder(
+                          borderSide: BorderSide(),
+                        ),
+                      ),
+                      initialCountryCode: 'KH',
+                      onChanged: (phone) {
+                        print(phone.completeNumber);
+                      },
+                    ),
+                  ),
+    
+                  ///  text new update
+                  const SizedBox(
+                    height: defaulHighSizeBox,
+                  ),
+    
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: TextFormField(
+                      obscureText: _isObscure,
+                      decoration: InputDecoration(
+                        labelText: 'Password',
+                        hintText: "Password",
+                        border: const OutlineInputBorder(
+                          borderSide: BorderSide(),
+                        ),
+                        suffixIcon: IconButton(
+                          icon: Icon(_isObscure
+                              ? Icons.visibility
+                              : Icons.visibility_off),
+                          onPressed: () {
+                            setState(() {
+                              _isObscure = !_isObscure;
+                            });
+                          },
+                        ),
                       ),
                     ),
                   ),
-                ),
-                const SizedBox(
-                  height: defaulHighSizeBox,
-                ),
-                TextButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const ContactUsPage()),
-                    );
-                  },
-                  child: const Text(
-                    'Contact us',
-                    style: TextStyle(
-                        color: Colors.black, fontWeight: FontWeight.bold),
+                  const SizedBox(
+                    height: defaulHighSizeBox * 3.5,
                   ),
-                ),
-              ],
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const MyHomePage(title: ""),
+                        ),
+                      );
+                    },
+                    style:
+                        ElevatedButton.styleFrom(backgroundColor: Colors.black),
+                    child: const SizedBox(
+                      width: 400,
+                      height: 60,
+                      child: Center(
+                        child: Text(
+                          'LOG IN',
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 20),
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: defaulHighSizeBox,
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const ForgetPasswordPage()),
+                      );
+                    },
+                    child: const Text(
+                      'Forget password?',
+                      style: TextStyle(
+                        color: Colors.black,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: defaulHighSizeBox,
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const RegisterPage()),
+                      );
+                    },
+                    style:
+                        ElevatedButton.styleFrom(backgroundColor: Colors.black),
+                    child: const SizedBox(
+                      width: 400,
+                      height: 60,
+                      child: Center(
+                        child: Text(
+                          'REGISTER',
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 20),
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: defaulHighSizeBox,
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const ContactUsPage()),
+                      );
+                    },
+                    child: const Text(
+                      'Contact us',
+                      style: TextStyle(
+                          color: Colors.black, fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),

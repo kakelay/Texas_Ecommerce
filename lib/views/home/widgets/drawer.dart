@@ -10,9 +10,11 @@ class DrawerPage extends StatelessWidget {
     return Drawer(
       backgroundColor: Colors.grey[50],
       child: ListView(
+        
         padding: EdgeInsets.zero,
         children: [
           DrawerHeader(
+            
             decoration: const BoxDecoration(
               color: Colors.grey,
             ),
@@ -31,13 +33,12 @@ class DrawerPage extends StatelessWidget {
                   ),
                 ),
                 SingleChildScrollView(
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Container(
-                      padding: const EdgeInsets.all(15.0),
-                      child: const Row(
-                        children: [
-                          Column(
+                  child: Container(
+                    padding: const EdgeInsets.all(15.0),
+                    child: const Row(
+                      children: [
+                        SingleChildScrollView(
+                          child: Column(
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -73,8 +74,8 @@ class DrawerPage extends StatelessWidget {
                               ),
                             ],
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
                   ),
                 ),

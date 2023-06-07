@@ -39,8 +39,6 @@ dependencies:
   fan_carousel_image_slider: ^0.1.2
   curved_labeled_navigation_bar: ^2.0.2
   line_icons: ^2.0.1
-  qr_code_scanner: ^1.0.1
-  qr_flutter: ^4.0.0
   easy_search_bar: ^2.5.0
   responsive_grid_list: ^1.3.2
   intl_phone_number_input: ^0.7.3+1
@@ -55,6 +53,7 @@ dependencies:
   country_picker_plus: ^2.0.1
   checkout_screen_ui: ^0.1.3
   http:
+  qr_bar_code_scanner_dialog: ^0.0.5
 
 dev_dependencies:
   flutter_test:

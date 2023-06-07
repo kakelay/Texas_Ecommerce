@@ -12,35 +12,21 @@ class Notificationbutton extends StatefulWidget {
 class _NotificationbuttonState extends State<Notificationbutton> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-       // centerTitle: false,
-        title: const Text(
-          "Notifications",
-          style: TextStyle(
-            color: Colors.black,
-            fontSize: 30,
+    return const SliverToBoxAdapter(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          SizedBox(
+            height: defaulHighSizeBox * 2,
           ),
-        ),
-      ),
-      body: const SingleChildScrollView(
-        child: Column(
-          children: [
-            SizedBox(
-              height: defaulHighSizeBox * 3,
+          Text(
+            " Your notification is empty!",
+            style: TextStyle(
+              fontSize: 22,
+              color: Colors.black,
             ),
-            Center(
-              child: Text(
-                "Your notification is empty!",
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 20,
-                ),
-              ),
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
