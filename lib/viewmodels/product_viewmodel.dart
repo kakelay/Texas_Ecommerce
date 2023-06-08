@@ -16,7 +16,7 @@ class ProductIstadeViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<dynamic> fetchAllShop() async {
+  Future<dynamic> fetchAllProductIstad() async {
     await _ProductRepository.getProdutIstad()
         .then((product) =>  setProductIstadList(ApiRespone.completed(product)))
         .onError((error, stackTrace) =>
