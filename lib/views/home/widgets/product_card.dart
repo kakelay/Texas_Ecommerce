@@ -1,21 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:istad_project_ecommerce/models/response/product_card.dart';
 
 import '../../../constants.dart';
 
+// ignore: must_be_immutable
 class ProductCard extends StatelessWidget {
-  const ProductCard({
-    Key? key,
-    required this.image,
-    required this.title,
-    required this.price,
+  // const ProductCard({
+  //   Key? key,
+  //   required this.image,
+  //   required this.title,
+  //   required this.price,
+  //   required this.press,
+  //   required this.bgColor,
+  // }) : super(key: key);
+  // final String image, title;
+  // final VoidCallback press;
+  // final int price;
+  // final Color bgColor;
+  ProductCard({
+    super.key,
+    required this.data,
     required this.press,
-    required this.bgColor,
-  }) : super(key: key);
-  final String image, title;
+  });
+  ProductIstadData data;
   final VoidCallback press;
-  final int price;
-  final Color bgColor;
+
+  // ignore: non_constant_identifier_names
 
   @override
   Widget build(BuildContext context) {
@@ -32,14 +43,13 @@ class ProductCard extends StatelessWidget {
           children: [
             Container(
               width: double.infinity,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 color: bgColor,
-                borderRadius: const BorderRadius.all(
-                    Radius.circular(defaultBorderRadius)),
+                borderRadius:
+                    BorderRadius.all(Radius.circular(defaultBorderRadius)),
               ),
-              child: Image.asset(
-                image,
-                height: 132,
+              child: Image.network(
+                'https://cms.istad.co${data.attributes.thumbnail.data.attributes.url}',
               ),
             ),
             const SizedBox(height: defaultPadding / 2),
@@ -47,7 +57,8 @@ class ProductCard extends StatelessWidget {
               children: [
                 Expanded(
                   child: Text(
-                    title,
+                    // ignore: unnecessary_string_interpolations
+                    '${data.attributes.title}',
                     style: const TextStyle(color: Colors.black),
                   ),
                 ),
@@ -55,7 +66,7 @@ class ProductCard extends StatelessWidget {
                 Column(
                   children: [
                     Text(
-                      "\$$price",
+                      "\$${data.attributes.price}",
                       style: Theme.of(context).textTheme.titleSmall,
                     ),
                     IconButton(
@@ -67,7 +78,7 @@ class ProductCard extends StatelessWidget {
                           height: 20,
                         ),
                       ),
-                    )
+                    ),
                   ],
                 ),
               ],

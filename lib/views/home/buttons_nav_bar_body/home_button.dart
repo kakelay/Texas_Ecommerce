@@ -1,16 +1,33 @@
 import 'package:fan_carousel_image_slider/fan_carousel_image_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:istad_project_ecommerce/viewmodels/product_viewmodel.dart';
 
 import '../../../constants.dart';
 import '../../../models/SlideImage.dart';
+import '../../../models/response/product_card.dart';
 import '../widgets/followus.dart';
 import '../widgets/new_arrival_products.dart';
-import '../widgets/popular_products.dart';
 
-class HomeButton extends StatelessWidget {
+class HomeButton extends StatefulWidget {
   const HomeButton({
     super.key,
   });
+  // ProductIstad? arrivalProducts;
+
+  @override
+  State<HomeButton> createState() => _HomeButtonState();
+}
+
+ProductIstad? arrivalProducts;
+
+class _HomeButtonState extends State<HomeButton> {
+  var productistasViewModel = ProductIstadeViewModel();
+
+  @override
+  void initState() {
+    productistasViewModel.fetchAllProductIstad();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +56,7 @@ class HomeButton extends StatelessWidget {
             //   child: SearchForm(),
             // ),
             //  const Categories(),
-      
+
             // slide image
             Padding(
               padding: const EdgeInsets.all(defaultPadding),
@@ -53,7 +70,41 @@ class HomeButton extends StatelessWidget {
                 indicatorActiveColor: Colors.black,
               ),
             ),
-            const NewArrivalProducts(),
+            // ChangeNotifierProvider<ProductIstadeViewModel>(
+            //   create: (context) => productistasViewModel,
+            //   child: Consumer<ProductIstadeViewModel>(
+            //     builder: ((context, value, child) {
+            //       switch (value.productistads.status) {
+            //         case Status.LOADING:
+            //           return const Center(
+            //             child: CircularProgressIndicator(),
+            //           );
+            //         case Status.COMPLETE:
+            //           return SizedBox(
+            //             height: 850,
+            //             // child: ListView.builder(
+            //             //   scrollDirection: Axis.horizontal,
+            //             //   itemCount: value.productistads.data!.data.length,
+            //             //   itemBuilder: (builder, index) {
+            //             //     return NewArrivalProducts(
+            //             //     arrivalProducts: value.productistads.data!.data[index],
+            //             //     );
+            //             //   },
+            //             // ),
+            //             child: NewArrivalProducts(
+            //               arrivalProducts: value.productistads.data!.data,
+            //             ),
+            //           );
+
+            //         default:
+            //           return const CircularProgressIndicator();
+            //       }
+            //     }),
+            //   ),
+            // ),
+
+           const   NewArrivalProducts(),
+
             const SizedBox(
               height: defaulHighSizeBox,
             ),
@@ -71,9 +122,9 @@ class HomeButton extends StatelessWidget {
                 ),
               ),
             ),
-      
+
             // const PopularProducts(),
-      
+
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: Column(
@@ -101,7 +152,7 @@ class HomeButton extends StatelessWidget {
                 ],
               ),
             ),
-            const PopularProducts(),
+            //   const PopularProducts(),
             //const NewArrivalProducts(),
             const SizedBox(
               height: defaulHighSizeBox,
@@ -115,7 +166,7 @@ class HomeButton extends StatelessWidget {
             ),
             const FollowUs(),
             const SizedBox(
-              height:defaulHighSizeBox,
+              height: defaulHighSizeBox,
             ),
           ],
         ),
@@ -123,4 +174,3 @@ class HomeButton extends StatelessWidget {
     );
   }
 }
-

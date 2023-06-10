@@ -1,49 +1,55 @@
-import 'package:flutter/material.dart';
+// import 'package:flutter/material.dart';
  
 
-import '../../../constants.dart';
-import '../../../models/Product.dart';
-import 'product_card.dart';
-import 'section_title.dart';
+// import '../../../constants.dart';
+// import '../../../models/Product.dart';
+// import '../../../models/response/product_card.dart';
+// import '../../details/details_screen.dart';
+// import 'product_card.dart';
+// import 'section_title.dart';
 
-class PopularProducts extends StatelessWidget {
-  const PopularProducts({
-    Key? key,
-  }) : super(key: key);
+// // ignore: must_be_immutable
+// class PopularProducts extends StatelessWidget {
+//    PopularProducts({
+//     Key? key,
+//   }) : super(key: key);
+//    ProductIstad? arrivalProducts;
 
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Padding(
-          padding: const EdgeInsets.symmetric(vertical: defaultPadding),
-          child: SectionTitle(
-            title: "Popular",
-            pressSeeAll: () {},
-          ),
-        ),
-        SingleChildScrollView(
-          physics: const BouncingScrollPhysics(
-              parent: AlwaysScrollableScrollPhysics()),
-          scrollDirection: Axis.horizontal,
-          child: Row(
-            children: List.generate(
-              demo_product.length,
-              (index) => Padding(
-                padding: const EdgeInsets.only(right: defaultPadding),
-                child: ProductCard(
-                  title: demo_product[index].title,
-                  image: demo_product[index].image,
-                  price: demo_product[index].price,
-                
-                  bgColor: demo_product[index].bgColor,
-                  press: () {},
-                ),
-              ),
-            ),
-          ),
-        )
-      ],
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return Column(
+//       children: [
+//         Padding(
+//           padding: const EdgeInsets.symmetric(vertical: defaultPadding),
+//           child: SectionTitle(
+//             title: "Popular",
+//             pressSeeAll: () {},
+//           ),
+//         ),
+//         SingleChildScrollView(
+//           physics: const BouncingScrollPhysics(
+//               parent: AlwaysScrollableScrollPhysics()),
+//           scrollDirection: Axis.horizontal,
+//           child: Row(
+//            children: [
+//               ListView.builder(
+//                   itemCount: arrivalProducts!.data.length,
+//                   itemBuilder: ((context, index) {
+//                     return ProductCard(
+//                       data: arrivalProducts!.data[index], 
+//                       press: (){
+//                         Navigator.push(
+//                         context,
+//                         MaterialPageRoute(
+//                           builder: (context) =>
+//                               DetailsScreen(product:arrivalProducts!.data.length),
+//                         ));
+//                       });
+//                   }))
+//             ],
+//           ),
+//         )
+//       ],
+//     );
+//   }
+// }

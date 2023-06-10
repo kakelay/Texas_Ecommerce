@@ -1,20 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:istad_project_ecommerce/views/add_cart/add_cart.dart';
-import 'package:istad_project_ecommerce/views/save_card/save_cart.dart';
+import 'package:istad_project_ecommerce/models/response/product_card.dart';
 
 import '../../constants.dart';
-import '../../models/Product.dart';
 
 class DetailsScreen extends StatelessWidget {
   const DetailsScreen({Key? key, required this.product}) : super(key: key);
 
-  final Product product;
+  final ProductIstadData product;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: product.bgColor,
+      // backgroundColor: product.bgColor,
       appBar: AppBar(
         leading: const BackButton(color: Colors.black),
         actions: [
@@ -34,7 +32,7 @@ class DetailsScreen extends StatelessWidget {
       body: Column(
         children: [
           Image.asset(
-            product.image,
+            product.attributes.thumbnail.data.attributes.url,
             height: MediaQuery.of(context).size.height * 0.4,
             fit: BoxFit.cover,
           ),
@@ -57,14 +55,14 @@ class DetailsScreen extends StatelessWidget {
                     children: [
                       Expanded(
                         child: Text(
-                          product.title,
+                          product.attributes.title,
                           style: Theme.of(context).textTheme.titleLarge,
                         ),
                       ),
                       const SizedBox(width: defaultPadding),
                       Text(
                         // ignore: prefer_interpolation_to_compose_strings
-                        "US \$" + product.price.toString(),
+                        "US \$" + product.attributes.price,
                         style: Theme.of(context).textTheme.titleLarge,
                       ),
                     ],
@@ -76,12 +74,12 @@ class DetailsScreen extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    "Rating : ${product.rating}",
+                    "Rating : ${product.attributes.rating}",
                     style: Theme.of(context).textTheme.titleSmall,
                   ),
                   const SizedBox(height: defaultPadding / 2),
                   const SizedBox(height: defaultPadding * 2),
-                  Column(
+                  const Column(
                     children: [
                       Center(
                         child: SizedBox(
@@ -101,45 +99,51 @@ class DetailsScreen extends StatelessWidget {
                           //   child: const Text("Add to Card"),
 
                           // ),
-                          child: ElevatedButton(
-                            onPressed: () {
-                              cartItem.add(product);
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        const AddCartScreen()),
-                              );
-                            },
-                            style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors.amber.shade800,
-                                shape: const StadiumBorder()),
-                            child: const Text("Add To Cart"),
-                          ),
+
+                          //  command  testing1
+
+                          // child: ElevatedButton(
+                          //   onPressed: () {
+                          //     cartItem.add(product);
+                          //     Navigator.push(
+                          //       context,
+                          //       MaterialPageRoute(
+                          //           builder: (context) =>
+                          //               const AddCartScreen()),
+                          //     );
+                          //   },
+                          //   style: ElevatedButton.styleFrom(
+                          //       backgroundColor: Colors.amber.shade800,
+                          //       shape: const StadiumBorder()),
+                          //   child: const Text("Add To Cart"),
+                          // ),
                         ),
                       ),
-                      const SizedBox(
+                      SizedBox(
                         height: defaulHighSizeBox,
                       ),
                       Center(
                         child: SizedBox(
                           width: 200,
                           height: 48,
-                          child: ElevatedButton(
-                            onPressed: () {
-                              bookmarkedItem.add(product);
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        const SaveCartScreen()),
-                              );
-                            },
-                            style: ElevatedButton.styleFrom(
-                                backgroundColor: primaryColor,
-                                shape: const StadiumBorder()),
-                            child: const Text("Save Product"),
-                          ),
+
+                          ///  command tesing  2
+
+                          // child: ElevatedButton(
+                          //   onPressed: () {
+                          //     bookmarkedItem.add(product);
+                          //     Navigator.push(
+                          //       context,
+                          //       MaterialPageRoute(
+                          //           builder: (context) =>
+                          //               const SaveCartScreen()),
+                          //     );
+                          //   },
+                          //   style: ElevatedButton.styleFrom(
+                          //       backgroundColor: primaryColor,
+                          //       shape: const StadiumBorder()),
+                          //   child: const Text("Save Product"),
+                          // ),
                         ),
                       ),
                     ],

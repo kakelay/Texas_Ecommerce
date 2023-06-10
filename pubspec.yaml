@@ -54,6 +54,8 @@ dependencies:
   checkout_screen_ui: ^0.1.3
   http:
   qr_bar_code_scanner_dialog: ^0.0.5
+  provider:
+  shared_preferences:
 
 dev_dependencies:
   flutter_test:

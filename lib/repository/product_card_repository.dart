@@ -1,10 +1,11 @@
 import '../data/network/network_api_service.dart';
+import '../data/response/api_respone.dart';
 import '../models/response/product_card.dart';
 import '../res/app_url.dart';
 
 class ProductIstadeRepository {
   final NetworkApiService _apiService = NetworkApiService();
-
+  ApiResponse<ProductIstad> productistads = ApiResponse.loading();
   Future<ProductIstad> getProdutIstad() async {
     try {
       dynamic response =
@@ -55,13 +56,13 @@ class ProductIstadeRepository {
   //   }
   // }
 
-  Future<dynamic> deleteRestaurant(id) async {
-    try {
-      var url = '${AppUrl.postRestaurant}/$id';
-      dynamic response = await _apiService.deleteApi(url);
-      return response;
-    } catch (e) {
-      rethrow;
-    }
-  }
+  // Future<dynamic> deleteRestaurant(id) async {
+  //   try {
+  //     var url = '${AppUrl.postRestaurant}/$id';
+  //     dynamic response = await _apiService.deleteApi(url);
+  //     return response;
+  //   } catch (e) {
+  //     rethrow;
+  //   }
+  // }
 }

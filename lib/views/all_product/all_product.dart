@@ -45,7 +45,7 @@ class _AllProductState extends State<AllProduct> {
        // actions: [IconButton(icon: const Icon(Icons.production_quantity_limits), onPressed: () {})],
         asyncSuggestions: (value) async => await _fetchSuggestions(value),
       ),
-      body: const AllProductList(),
+      body: AllProductList(),
     );
   }
 }

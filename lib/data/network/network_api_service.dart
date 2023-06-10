@@ -63,7 +63,7 @@ class NetworkApiService {
   }
 
   ///  network upload Image
-  
+
   // Future uploadImage(String url, file) async {
   //   var request = http.MultipartRequest('POST', Uri.parse(url));
   //   request.files.add(await http.MultipartFile.fromPath("files", file));
@@ -96,10 +96,11 @@ class NetworkApiService {
 }
 
 returnResponse(http.Response response) {
-  print("response:: ${response.statusCode}");
+  print("response: ${response.statusCode}");
   switch (response.statusCode) {
     case 200:
       print("response:: ${response.body}");
+       
       return jsonDecode(response.body);
     case 400:
       throw FetchDataException("No Internet Connection");
