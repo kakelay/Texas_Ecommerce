@@ -50,8 +50,8 @@ class _SaveCartScreenState extends State<SaveCartScreen> {
       ),
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
-        child: Column(children: [
-          ...bookmarkedItem
+        child: Column(
+          children: cartProducts
               .map<Widget>((e) => GestureDetector(
                     // onTap: () {
                     //   Navigator.of(context).push(
@@ -98,8 +98,9 @@ class _SaveCartScreenState extends State<SaveCartScreen> {
                                     //   height: 200,
                                     //   fit: BoxFit.fitHeight,
                                     // ),
-                                    child: Image.asset(
-                                      e.image,
+                                    child: Image.network(
+                                      e.attributes.category.data.attributes
+                                          .iconUrl,
                                       width: 200,
                                       height: 200,
                                       fit: BoxFit.cover,
@@ -109,7 +110,7 @@ class _SaveCartScreenState extends State<SaveCartScreen> {
                                     height: 5,
                                   ),
                                   Text(
-                                    "${e.price}-\$",
+                                    "${e.attributes.price}-\$",
                                     style: const TextStyle(
                                         fontSize: 22,
                                         fontWeight: FontWeight.bold),
@@ -118,7 +119,7 @@ class _SaveCartScreenState extends State<SaveCartScreen> {
                                     height: 5,
                                   ),
                                   // ignore: unnecessary_string_interpolations
-                                  Text("${e.title}",
+                                  Text("${e.attributes.title}",
                                       style: const TextStyle(
                                           fontSize: 16,
                                           fontWeight: FontWeight.w500),
@@ -228,7 +229,7 @@ class _SaveCartScreenState extends State<SaveCartScreen> {
                                   ),
                                   ElevatedButton(
                                     onPressed: () {
-                                      cartItem.add(e);
+                                      // cartItem.add(e);
                                       Navigator.push(
                                         context,
                                         MaterialPageRoute(
@@ -287,7 +288,7 @@ class _SaveCartScreenState extends State<SaveCartScreen> {
           // const Divider(
           //   thickness: 2,
           // )
-        ]),
+        ),
       ),
     );
   }

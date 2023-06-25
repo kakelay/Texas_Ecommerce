@@ -1,24 +1,23 @@
-class AppException implements Exception {
+class AppExpetion implements Exception {
   final message;
   final prefix;
-  AppException({this.message, this.prefix});
-
+  AppExpetion({this.message, this.prefix});
   @override
   String toString() {
-    return 'AppException {message:$message ,prefix"$prefix}';
+    return 'AppException{massage:$message,prefix"$prefix"}';
   }
 }
 
-class FetchDataException extends AppException {
+class FetchDataException extends AppExpetion {
   FetchDataException(String? message)
       : super(
             message: message,
-            prefix: 'Error During communicate,please check your internet');
+            prefix: "Error Durng communicate check your intenet");
 }
 
-class UnAuthorizedException extends AppException {
+class UnAuthorizedException extends AppExpetion {
   UnAuthorizedException(String? message)
       : super(
             message: message,
-            prefix: ' Your are not authorized with this request');
+            prefix: "You are not authorized with this requst");
 }

@@ -1,13 +1,17 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:istad_project_ecommerce/models/response/product_card.dart';
 
 import '../../constants.dart';
+import '../add_cart/add_cart.dart';
+import '../save_card/save_cart.dart';
 
 class DetailsScreen extends StatelessWidget {
-  const DetailsScreen({Key? key, required this.product}) : super(key: key);
+  DetailsScreen({Key? key, required this.productIstadData}) : super(key: key);
 
-  final ProductIstadData product;
+  ProductIstadData productIstadData;
 
   @override
   Widget build(BuildContext context) {
@@ -15,6 +19,12 @@ class DetailsScreen extends StatelessWidget {
       // backgroundColor: product.bgColor,
       appBar: AppBar(
         leading: const BackButton(color: Colors.black),
+        title: Text(
+          "hi",
+          style: TextStyle(
+            color: Colors.black,
+          ),
+        ),
         actions: [
           IconButton(
             onPressed: () {},
@@ -31,8 +41,8 @@ class DetailsScreen extends StatelessWidget {
       ),
       body: Column(
         children: [
-          Image.asset(
-            product.attributes.thumbnail.data.attributes.url,
+          Image.network(
+            productIstadData.attributes.category.data.attributes.iconUrl,
             height: MediaQuery.of(context).size.height * 0.4,
             fit: BoxFit.cover,
           ),
@@ -55,15 +65,20 @@ class DetailsScreen extends StatelessWidget {
                     children: [
                       Expanded(
                         child: Text(
-                          product.attributes.title,
-                          style: Theme.of(context).textTheme.titleLarge,
+                          // ignore: unnecessary_string_interpolations
+                          '${productIstadData.attributes.title}',
+                          style: const TextStyle(color: Colors.black),
                         ),
                       ),
                       const SizedBox(width: defaultPadding),
+                      // Text(
+                      //   // ignore: prefer_interpolation_to_compose_strings
+                      //   "US \$" + product2.price,
+                      //   style: Theme.of(context).textTheme.titleLarge,
+                      // ),
                       Text(
-                        // ignore: prefer_interpolation_to_compose_strings
-                        "US \$" + product.attributes.price,
-                        style: Theme.of(context).textTheme.titleLarge,
+                        "\$${productIstadData.attributes.price}",
+                        style: Theme.of(context).textTheme.titleSmall,
                       ),
                     ],
                   ),
@@ -73,13 +88,17 @@ class DetailsScreen extends StatelessWidget {
                       "A Henley shirt is a collarless pullover shirt, by a round neckline and a placket about 3 to 5 inches (8 to 13 cm) long and usually having 2–5 buttons.",
                     ),
                   ),
+                  // Text(
+                  //   "Rating : ${product2.rating}",
+                  //   style: Theme.of(context).textTheme.titleSmall,
+                  // ),
                   Text(
-                    "Rating : ${product.attributes.rating}",
+                    "\$${productIstadData.attributes.price}",
                     style: Theme.of(context).textTheme.titleSmall,
                   ),
                   const SizedBox(height: defaultPadding / 2),
                   const SizedBox(height: defaultPadding * 2),
-                  const Column(
+                   Column(
                     children: [
                       Center(
                         child: SizedBox(
@@ -102,21 +121,21 @@ class DetailsScreen extends StatelessWidget {
 
                           //  command  testing1
 
-                          // child: ElevatedButton(
-                          //   onPressed: () {
-                          //     cartItem.add(product);
-                          //     Navigator.push(
-                          //       context,
-                          //       MaterialPageRoute(
-                          //           builder: (context) =>
-                          //               const AddCartScreen()),
-                          //     );
-                          //   },
-                          //   style: ElevatedButton.styleFrom(
-                          //       backgroundColor: Colors.amber.shade800,
-                          //       shape: const StadiumBorder()),
-                          //   child: const Text("Add To Cart"),
-                          // ),
+                          child: ElevatedButton(
+                            onPressed: () {
+                              cartProducts.add(productIstadData);
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        const AddCartScreen()),
+                              );
+                            },
+                            style: ElevatedButton.styleFrom(
+                                backgroundColor: Colors.amber.shade800,
+                                shape: const StadiumBorder()),
+                            child: const Text("Add To Cart"),
+                          ),
                         ),
                       ),
                       SizedBox(
@@ -129,21 +148,21 @@ class DetailsScreen extends StatelessWidget {
 
                           ///  command tesing  2
 
-                          // child: ElevatedButton(
-                          //   onPressed: () {
-                          //     bookmarkedItem.add(product);
-                          //     Navigator.push(
-                          //       context,
-                          //       MaterialPageRoute(
-                          //           builder: (context) =>
-                          //               const SaveCartScreen()),
-                          //     );
-                          //   },
-                          //   style: ElevatedButton.styleFrom(
-                          //       backgroundColor: primaryColor,
-                          //       shape: const StadiumBorder()),
-                          //   child: const Text("Save Product"),
-                          // ),
+                          child: ElevatedButton(
+                            onPressed: () {
+                             cartProducts.add(productIstadData);
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        const SaveCartScreen()),
+                              );
+                            },
+                            style: ElevatedButton.styleFrom(
+                                backgroundColor: primaryColor,
+                                shape: const StadiumBorder()),
+                            child: const Text("Save Product"),
+                          ),
                         ),
                       ),
                     ],

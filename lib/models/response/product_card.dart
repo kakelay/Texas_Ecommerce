@@ -1,6 +1,4 @@
-// To parse this JSON data, do
-//
-//     final productIstad = productIstadFromJson(jsonString);
+ 
 
 import 'dart:convert';
 
@@ -11,14 +9,19 @@ String productIstadToJson(ProductIstad data) => json.encode(data.toJson());
 
 class ProductIstad {
   List<ProductIstadData> data;
+  List<ProductIstadData> productdetail  ;
+ 
 
   ProductIstad({
     required this.data,
+     required this.productdetail,
+       
+     
   });
 
   factory ProductIstad.fromJson(Map<String, dynamic> json) => ProductIstad(
         data: List<ProductIstadData>.from(
-            json["data"].map((x) => ProductIstadData.fromJson(x))),
+            json["data"].map((x) => ProductIstadData.fromJson(x))), productdetail: [],
       );
 
   Map<String, dynamic> toJson() => {
@@ -28,7 +31,7 @@ class ProductIstad {
 
 class ProductIstadData {
   int id;
-  ProductIstadDataAttributes attributes;
+  ProductIstadAttributes attributes;
 
   ProductIstadData({
     required this.id,
@@ -38,7 +41,7 @@ class ProductIstadData {
   factory ProductIstadData.fromJson(Map<String, dynamic> json) =>
       ProductIstadData(
         id: json["id"],
-        attributes: ProductIstadDataAttributes.fromJson(json["attributes"]),
+        attributes: ProductIstadAttributes.fromJson(json["attributes"]),
       );
 
   Map<String, dynamic> toJson() => {
@@ -47,7 +50,7 @@ class ProductIstadData {
       };
 }
 
-class ProductIstadDataAttributes {
+class ProductIstadAttributes {
   String title;
   DateTime createdAt;
   DateTime updatedAt;
@@ -57,9 +60,8 @@ class ProductIstadDataAttributes {
   String description;
   String quantity;
   Category category;
-  Thumbnail thumbnail;
 
-  ProductIstadDataAttributes({
+  ProductIstadAttributes({
     required this.title,
     required this.createdAt,
     required this.updatedAt,
@@ -69,11 +71,10 @@ class ProductIstadDataAttributes {
     required this.description,
     required this.quantity,
     required this.category,
-    required this.thumbnail,
   });
 
-  factory ProductIstadDataAttributes.fromJson(Map<String, dynamic> json) =>
-      ProductIstadDataAttributes(
+  factory ProductIstadAttributes.fromJson(Map<String, dynamic> json) =>
+      ProductIstadAttributes(
         title: json["title"],
         createdAt: DateTime.parse(json["createdAt"]),
         updatedAt: DateTime.parse(json["updatedAt"]),
@@ -83,7 +84,6 @@ class ProductIstadDataAttributes {
         description: json["description"],
         quantity: json["quantity"],
         category: Category.fromJson(json["category"]),
-        thumbnail: Thumbnail.fromJson(json["thumbnail"]),
       );
 
   Map<String, dynamic> toJson() => {
@@ -96,19 +96,18 @@ class ProductIstadDataAttributes {
         "description": description,
         "quantity": quantity,
         "category": category.toJson(),
-        "thumbnail": thumbnail.toJson(),
       };
 }
 
 class Category {
-  CategoryData data;
+  Data data;
 
   Category({
     required this.data,
   });
 
   factory Category.fromJson(Map<String, dynamic> json) => Category(
-        data: CategoryData.fromJson(json["data"]),
+        data: Data.fromJson(json["data"]),
       );
 
   Map<String, dynamic> toJson() => {
@@ -116,18 +115,18 @@ class Category {
       };
 }
 
-class CategoryData {
+class Data {
   int id;
-  PurpleAttributes attributes;
+  DataAttributes attributes;
 
-  CategoryData({
+  Data({
     required this.id,
     required this.attributes,
   });
 
-  factory CategoryData.fromJson(Map<String, dynamic> json) => CategoryData(
+  factory Data.fromJson(Map<String, dynamic> json) => Data(
         id: json["id"],
-        attributes: PurpleAttributes.fromJson(json["attributes"]),
+        attributes: DataAttributes.fromJson(json["attributes"]),
       );
 
   Map<String, dynamic> toJson() => {
@@ -136,14 +135,14 @@ class CategoryData {
       };
 }
 
-class PurpleAttributes {
+class DataAttributes {
   String title;
   DateTime createdAt;
   DateTime updatedAt;
   DateTime publishedAt;
   String iconUrl;
 
-  PurpleAttributes({
+  DataAttributes({
     required this.title,
     required this.createdAt,
     required this.updatedAt,
@@ -151,8 +150,7 @@ class PurpleAttributes {
     required this.iconUrl,
   });
 
-  factory PurpleAttributes.fromJson(Map<String, dynamic> json) =>
-      PurpleAttributes(
+  factory DataAttributes.fromJson(Map<String, dynamic> json) => DataAttributes(
         title: json["title"],
         createdAt: DateTime.parse(json["createdAt"]),
         updatedAt: DateTime.parse(json["updatedAt"]),
@@ -166,58 +164,5 @@ class PurpleAttributes {
         "updatedAt": updatedAt.toIso8601String(),
         "publishedAt": publishedAt.toIso8601String(),
         "iconUrl": iconUrl,
-      };
-}
-
-class Thumbnail {
-  ThumbnailData data;
-
-  Thumbnail({
-    required this.data,
-  });
-
-  factory Thumbnail.fromJson(Map<String, dynamic> json) => Thumbnail(
-        data: ThumbnailData.fromJson(json["data"]),
-      );
-
-  Map<String, dynamic> toJson() => {
-        "data": data.toJson(),
-      };
-}
-
-class ThumbnailData {
-  int id;
-  FluffyAttributes attributes;
-
-  ThumbnailData({
-    required this.id,
-    required this.attributes,
-  });
-
-  factory ThumbnailData.fromJson(Map<String, dynamic> json) => ThumbnailData(
-        id: json["id"],
-        attributes: FluffyAttributes.fromJson(json["attributes"]),
-      );
-
-  Map<String, dynamic> toJson() => {
-        "id": id,
-        "attributes": attributes.toJson(),
-      };
-}
-
-class FluffyAttributes {
-  String url;
-
-  FluffyAttributes({
-    required this.url,
-  });
-
-  factory FluffyAttributes.fromJson(Map<String, dynamic> json) =>
-      FluffyAttributes(
-        url: json["url"],
-      );
-
-  Map<String, dynamic> toJson() => {
-        "url": url,
       };
 }

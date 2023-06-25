@@ -1,10 +1,9 @@
 import 'package:fan_carousel_image_slider/fan_carousel_image_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:istad_project_ecommerce/viewmodels/product_viewmodel.dart';
 
 import '../../../constants.dart';
 import '../../../models/SlideImage.dart';
-import '../../../models/response/product_card.dart';
+
 import '../widgets/followus.dart';
 import '../widgets/new_arrival_products.dart';
 
@@ -18,16 +17,16 @@ class HomeButton extends StatefulWidget {
   State<HomeButton> createState() => _HomeButtonState();
 }
 
-ProductIstad? arrivalProducts;
+// ProductIstad? arrivalProducts;
 
 class _HomeButtonState extends State<HomeButton> {
-  var productistasViewModel = ProductIstadeViewModel();
+  // var productistasViewModel = ProductIstadeViewModel();
 
-  @override
-  void initState() {
-    productistasViewModel.fetchAllProductIstad();
-    super.initState();
-  }
+  // @override
+  // void initState() {
+  //   productistasViewModel.fetchAllProductIstad();
+  //   super.initState();
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -103,7 +102,7 @@ class _HomeButtonState extends State<HomeButton> {
             //   ),
             // ),
 
-           const   NewArrivalProducts(),
+            const NewArrivalProducts(),
 
             const SizedBox(
               height: defaulHighSizeBox,

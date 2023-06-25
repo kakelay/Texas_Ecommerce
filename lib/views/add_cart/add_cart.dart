@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:istad_project_ecommerce/constants.dart';
- 
+
 import 'package:istad_project_ecommerce/views/order_product/order_product.dart';
 
 import '../../models/Product.dart';
@@ -50,203 +50,211 @@ class _AddCartScreenState extends State<AddCartScreen> {
         physics: const BouncingScrollPhysics(),
         child: Column(
           children: [
-            ...cartItem
-                .map<Widget>((e) => GestureDetector(
-                      // onTap: () {
-                      //   Navigator.of(context).push(
-                      //     MaterialPageRoute(
-                      //       builder: (context) => DetailsScreen(
-                      //       product: ,
-                      //       ),
-                      //     ),
-                      //   );
-                      // },
-                      child: Container(
-                          margin: const EdgeInsets.all(5),
-                          padding: const EdgeInsets.all(5),
-                          decoration: const BoxDecoration(
-                            color: Colors.white10,
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(25),
-                            ),
-                          ),
-
-                          // height: 300,
-                          width: double.infinity,
-                          child: Row(
-                            children: [
-                              Expanded(
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
-                                  children: [
-                                    Container(
-                                      height: 200,
-                                      width: 175,
-                                      clipBehavior: Clip.antiAlias,
-                                      decoration: const BoxDecoration(
-                                        borderRadius: BorderRadius.all(
-                                          Radius.circular(25),
-                                        ),
-                                      ),
-                                      // child: Image.network(
-                                      //   e.productImage,
-                                      //   width: 200,
-                                      //   height: 200,
-                                      //   fit: BoxFit.fitHeight,
-                                      // ),
-                                      child: Image.asset(
-                                        e.image,
-                                        width: 200,
-                                        height: 200,
-                                        fit: BoxFit.cover,
-                                      ),
-                                    ),
-                                    const SizedBox(
-                                      height: 5,
-                                    ),
-                                    Text(
-                                      "${e.price}-\$",
-                                      style: const TextStyle(
-                                          fontSize: 22,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                    const SizedBox(
-                                      height: 5,
-                                    ),
-                                    // ignore: unnecessary_string_interpolations
-                                    Text("${e.title}",
-                                        style: const TextStyle(
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.w500),
-                                        textAlign: TextAlign.center),
-                                    const SizedBox(
-                                      height: 5,
-                                    ),
-                                    const SizedBox(
-                                      height: 5,
-                                    ),
-                                  ],
-                                ),
+            Column(
+              children: cartProducts
+                  .map<Widget>((e) => GestureDetector(
+                        // onTap: () {
+                        //   Navigator.of(context).push(
+                        //     MaterialPageRoute(
+                        //       builder: (context) => DetailsScreen(
+                        //       product: ,
+                        //       ),
+                        //     ),
+                        //   );
+                        // },
+                        child: Container(
+                            margin: const EdgeInsets.all(5),
+                            padding: const EdgeInsets.all(5),
+                            decoration: const BoxDecoration(
+                              color: Colors.white10,
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(25),
                               ),
-                              Expanded(
-                                child: Column(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
-                                  children: [
-                                    TextButton(
-                                      onPressed: () {
-                                        showDialog(
-                                          context: context,
-                                          builder: (context) => Dialog(
-                                            shape: const RoundedRectangleBorder(
-                                                borderRadius: BorderRadius.all(
-                                                    Radius.circular(25))),
-                                            clipBehavior: Clip.antiAlias,
-                                            child: Container(
-                                              height: 300,
-                                              decoration: const BoxDecoration(
-                                                borderRadius: BorderRadius.all(
-                                                  Radius.circular(
-                                                    25,
-                                                  ),
-                                                ),
-                                              ),
-                                              child: const SingleChildScrollView(
-                                                  // child: Column(
-                                                  //   children: e
-                                                  //       .productDescription
-                                                  //       .map<Widget>(
-                                                  //           (e) => ListTile(
-                                                  //                 title: Text(
-                                                  //                     "${e[0]}"),
-                                                  //                 subtitle: Text(
-                                                  //                     "${e[1]}"),
-                                                  //               ))
-                                                  //       .toList(),
-                                                  // ),
-                                                  ),
-                                            ),
+                            ),
+
+                            // height: 300,
+                            width: double.infinity,
+                            child: Row(
+                              children: [
+                                Expanded(
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceEvenly,
+                                    children: [
+                                      Container(
+                                        height: 200,
+                                        width: 175,
+                                        clipBehavior: Clip.antiAlias,
+                                        decoration: const BoxDecoration(
+                                          borderRadius: BorderRadius.all(
+                                            Radius.circular(25),
                                           ),
-                                        );
-                                      },
-                                      child: const Text("View Description"),
-                                    ),
-                                    Text(
-                                      "${e.selectedItem * e.price}-\$",
-                                      style: const TextStyle(
-                                          fontSize: 25,
-                                          fontWeight: FontWeight.w500),
-                                    ),
-                                    const SizedBox(
-                                      height: 5,
-                                    ),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceAround,
-                                      children: [
-                                        IconButton(
-                                          onPressed: () {
-                                            setState(() {
-                                              if (e.selectedItem > 1) {
-                                                e.selectedItem -= 1;
-                                              }
-                                            });
-                                          },
-                                          icon: const Icon(Icons.remove,
-                                              color: Colors.red),
                                         ),
-                                        Text(
-                                          // ignore: unnecessary_string_interpolations
-                                          "${e.selectedItem}",
+                                        // child: Image.network(
+                                        //   e.productImage,
+                                        //   width: 200,
+                                        //   height: 200,
+                                        //   fit: BoxFit.fitHeight,
+                                        // ),
+                                        child: Image.network(
+                                          e.attributes.category.data.attributes.iconUrl,
+                                          width: 200,
+                                          height: 200,
+                                          fit: BoxFit.cover,
+                                        ),
+                                      ),
+                                      const SizedBox(
+                                        height: 5,
+                                      ),
+                                      Text(
+                                        "${e.attributes.price}-\$",
+                                        style: const TextStyle(
+                                            fontSize: 22,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                      const SizedBox(
+                                        height: 5,
+                                      ),
+                                      // ignore: unnecessary_string_interpolations
+                                      Text("${e.attributes.title}",
                                           style: const TextStyle(
-                                              fontSize: 25,
+                                              fontSize: 16,
                                               fontWeight: FontWeight.w500),
-                                        ),
-                                        IconButton(
-                                          onPressed: () {
-                                            setState(
-                                              () {
-                                                e.selectedItem += 1;
-                                              },
-                                            );
-                                          },
-                                          icon: const Icon(Icons.add,
-                                              color: Colors.green),
-                                        ),
-                                      ],
-                                    ),
-                                    const SizedBox(
-                                      height: defaulHighSizeBox,
-                                    ),
-                                    ElevatedButton(
-                                      style: ButtonStyle(
-                                          backgroundColor:
-                                              MaterialStateProperty.all(
-                                                  Colors.amber)),
-                                      onPressed: () {},
-                                      child: const Text("Order Product"),
-                                    ),
-                                    ElevatedButton(
-                                      onPressed: () {
-                                        setState(() {
-                                          cartItem.remove(e);
-                                        });
-                                      },
-                                      style: ButtonStyle(
-                                          backgroundColor:
-                                              MaterialStateProperty.all(
-                                                  Colors.red)),
-                                      child: const Text("Remove from cart"),
-                                    ),
-                                  ],
+                                          textAlign: TextAlign.center),
+                                      const SizedBox(
+                                        height: 5,
+                                      ),
+                                      const SizedBox(
+                                        height: 5,
+                                      ),
+                                    ],
+                                  ),
                                 ),
-                              )
-                            ],
-                          )),
-                    ))
-                .toList(),
+                                // Expanded(
+                                //   child: Column(
+                                //     mainAxisAlignment:
+                                //         MainAxisAlignment.spaceEvenly,
+                                //     children: [
+                                //       TextButton(
+                                //         onPressed: () {
+                                //           showDialog(
+                                //             context: context,
+                                //             builder: (context) => Dialog(
+                                //               shape:
+                                //                   const RoundedRectangleBorder(
+                                //                       borderRadius:
+                                //                           BorderRadius.all(
+                                //                               Radius.circular(
+                                //                                   25))),
+                                //               clipBehavior: Clip.antiAlias,
+                                //               child: Container(
+                                //                 height: 300,
+                                //                 decoration: const BoxDecoration(
+                                //                   borderRadius:
+                                //                       BorderRadius.all(
+                                //                     Radius.circular(
+                                //                       25,
+                                //                     ),
+                                //                   ),
+                                //                 ),
+                                //                 child: const SingleChildScrollView(
+                                //                     // child: Column(
+                                //                     //   children: e
+                                //                     //       .productDescription
+                                //                     //       .map<Widget>(
+                                //                     //           (e) => ListTile(
+                                //                     //                 title: Text(
+                                //                     //                     "${e[0]}"),
+                                //                     //                 subtitle: Text(
+                                //                     //                     "${e[1]}"),
+                                //                     //               ))
+                                //                     //       .toList(),
+                                //                     // ),
+                                //                     ),
+                                //               ),
+                                //             ),
+                                //           );
+                                //         },
+                                //         child: const Text("View Description"),
+                                //       ),
+                                //       Text(
+                                //         "${e.selectedItem * e.price}-\$",
+                                //         style: const TextStyle(
+                                //             fontSize: 25,
+                                //             fontWeight: FontWeight.w500),
+                                //       ),
+                                //       const SizedBox(
+                                //         height: 5,
+                                //       ),
+                                //       Row(
+                                //         mainAxisAlignment:
+                                //             MainAxisAlignment.spaceAround,
+                                //         children: [
+                                //           IconButton(
+                                //             onPressed: () {
+                                //               setState(() {
+                                //                 if (e.selectedItem > 1) {
+                                //                   e.selectedItem -= 1;
+                                //                 }
+                                //               });
+                                //             },
+                                //             icon: const Icon(Icons.remove,
+                                //                 color: Colors.red),
+                                //           ),
+                                //           Text(
+                                //             // ignore: unnecessary_string_interpolations
+                                //             "${e.selectedItem}",
+                                //             style: const TextStyle(
+                                //                 fontSize: 25,
+                                //                 fontWeight: FontWeight.w500),
+                                //           ),
+                                //           IconButton(
+                                //             onPressed: () {
+                                //               setState(
+                                //                 () {
+                                //                   e.selectedItem += 1;
+                                //                 },
+                                //               );
+                                //             },
+                                //             icon: const Icon(Icons.add,
+                                //                 color: Colors.green),
+                                //           ),
+                                //         ],
+                                //       ),
+                                //       const SizedBox(
+                                //         height: defaulHighSizeBox,
+                                //       ),
+                                //       ElevatedButton(
+                                //         style: ButtonStyle(
+                                //             backgroundColor:
+                                //                 MaterialStateProperty.all(
+                                //                     Colors.amber)),
+                                //         onPressed: () {},
+                                //         child: const Text("Order Product"),
+                                //       ),
+                                //       ElevatedButton(
+                                //         onPressed: () {
+                                //           setState(() {
+                                //             cartItem.remove(e);
+                                //           });
+                                //         },
+                                //         style: ButtonStyle(
+                                //             backgroundColor:
+                                //                 MaterialStateProperty.all(
+                                //                     Colors.red)),
+                                //         child: const Text("Remove from cart"),
+                                //       ),
+                                //     ],
+                                //   ),
+                                // )
+                              ],
+                            )),
+                      ))
+                  .toList(),
+            ),
+
             const Divider(
               thickness: 2,
             ),
@@ -295,7 +303,7 @@ class _AddCartScreenState extends State<AddCartScreen> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) =>  OrderProductPage()),
+                    MaterialPageRoute(builder: (context) => OrderProductPage()),
                   );
                 },
                 style: ElevatedButton.styleFrom(
