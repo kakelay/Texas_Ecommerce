@@ -16,7 +16,7 @@ class _SaveCartScreenState extends State<SaveCartScreen> {
   void initState() {
     super.initState();
 
-    bookmarkedItem = bookmarkedItem.toSet().toList();
+   cartProducts =cartProducts.toSet().toList();
   }
 
   late int totalAmount;
@@ -31,9 +31,12 @@ class _SaveCartScreenState extends State<SaveCartScreen> {
     //   totalAmount += element.price * 1;
 
     // }
-    for (var element in bookmarkedItem) {
-      totalAmount += element.price * element.selectedItem;
-    }
+    // for (var element in bookmarkedItem) {
+    //   totalAmount += element.price * element.selectedItem;
+    // }
+    //  cartProducts.forEach((element) {
+    //   totalAmount += (element.attributes.price * element.selectedItem) as int;
+    // });
 
     return Scaffold(
       appBar: AppBar(
@@ -246,7 +249,7 @@ class _SaveCartScreenState extends State<SaveCartScreen> {
                                   ElevatedButton(
                                     onPressed: () {
                                       setState(() {
-                                        bookmarkedItem.remove(e);
+                                       cartProducts.remove(e);
                                       });
                                     },
                                     style: ButtonStyle(

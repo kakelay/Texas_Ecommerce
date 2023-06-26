@@ -1,7 +1,9 @@
 import 'dart:io';
 import 'package:checkout_screen_ui/checkout_page.dart';
 import 'package:flutter/material.dart';
-import 'package:istad_project_ecommerce/models/Product.dart';
+ 
+
+import '../../constants.dart';
 
 // ignore: must_be_immutable
 class OrderProductPage extends StatelessWidget {
@@ -27,7 +29,7 @@ class OrderProductPage extends StatelessWidget {
 
 // From Cart screen
   void initState() {
-    cartItem = cartItem.toSet().toList();
+   cartProducts  = cartProducts.toSet().toList();
   }
 
   late int totalAmount;
@@ -41,9 +43,10 @@ class OrderProductPage extends StatelessWidget {
     //   totalAmount += element.price * 1;
 
     // }
-    for (var element in cartItem) {
-      totalAmount += element.price * element.selectedItem;
-    }
+   cartProducts.forEach((element) {
+      totalAmount += (element.attributes.price * element.selectedItem) as int;
+    });
+
 
     final demoOnlyStuff = DemoOnlyStuff();
 

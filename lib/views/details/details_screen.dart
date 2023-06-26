@@ -19,8 +19,8 @@ class DetailsScreen extends StatelessWidget {
       // backgroundColor: product.bgColor,
       appBar: AppBar(
         leading: const BackButton(color: Colors.black),
-        title: Text(
-          "hi",
+        title: const Text(
+          "Detail Screen",
           style: TextStyle(
             color: Colors.black,
           ),
@@ -98,7 +98,7 @@ class DetailsScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: defaultPadding / 2),
                   const SizedBox(height: defaultPadding * 2),
-                   Column(
+                  Column(
                     children: [
                       Center(
                         child: SizedBox(
@@ -123,7 +123,7 @@ class DetailsScreen extends StatelessWidget {
 
                           child: ElevatedButton(
                             onPressed: () {
-                              cartProducts.add(productIstadData);
+                              cartSavePro.add(productIstadData);
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
@@ -138,7 +138,7 @@ class DetailsScreen extends StatelessWidget {
                           ),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: defaulHighSizeBox,
                       ),
                       Center(
@@ -150,7 +150,7 @@ class DetailsScreen extends StatelessWidget {
 
                           child: ElevatedButton(
                             onPressed: () {
-                             cartProducts.add(productIstadData);
+                              cartProducts.add(productIstadData);
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(

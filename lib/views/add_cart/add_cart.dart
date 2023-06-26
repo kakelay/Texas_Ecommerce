@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:istad_project_ecommerce/constants.dart';
+import 'package:istad_project_ecommerce/models/Product.dart';
 
 import 'package:istad_project_ecommerce/views/order_product/order_product.dart';
 
-import '../../models/Product.dart';
+ 
 
 class AddCartScreen extends StatefulWidget {
   const AddCartScreen({super.key});
@@ -17,7 +18,7 @@ class _AddCartScreenState extends State<AddCartScreen> {
   void initState() {
     super.initState();
 
-    cartItem = cartItem.toSet().toList();
+   cartSavePro = cartSavePro.toSet().toList();
   }
 
   late int totalAmount;
@@ -25,16 +26,19 @@ class _AddCartScreenState extends State<AddCartScreen> {
   @override
   Widget build(BuildContext context) {
     // ignore: unused_local_variable
-    int? selectedItem = 1;
+    int selectedItem = 1;
     totalAmount = 0;
     // for (var element in cartItem) {
     //   // totalAmount += element.price* element.selectedItem;
     //   totalAmount += element.price * 1;
 
     // }
-    cartItem.forEach((element) {
-      totalAmount += element.price * element.selectedItem;
-    });
+    // cartItem.forEach((element) {
+    //   totalAmount += element.price * element.selectedItem;
+    // });
+  //  cartSavePro.forEach((element) {
+  //     totalAmount += (element.attributes.price * element.selectedItem) as int;
+  //   });
 
     return Scaffold(
       appBar: AppBar(
@@ -51,7 +55,7 @@ class _AddCartScreenState extends State<AddCartScreen> {
         child: Column(
           children: [
             Column(
-              children: cartProducts
+              children: cartSavePro
                   .map<Widget>((e) => GestureDetector(
                         // onTap: () {
                         //   Navigator.of(context).push(
@@ -99,7 +103,8 @@ class _AddCartScreenState extends State<AddCartScreen> {
                                         //   fit: BoxFit.fitHeight,
                                         // ),
                                         child: Image.network(
-                                          e.attributes.category.data.attributes.iconUrl,
+                                          e.attributes.category.data.attributes
+                                              .iconUrl,
                                           width: 200,
                                           height: 200,
                                           fit: BoxFit.cover,
@@ -132,123 +137,133 @@ class _AddCartScreenState extends State<AddCartScreen> {
                                     ],
                                   ),
                                 ),
-                                // Expanded(
-                                //   child: Column(
-                                //     mainAxisAlignment:
-                                //         MainAxisAlignment.spaceEvenly,
-                                //     children: [
-                                //       TextButton(
-                                //         onPressed: () {
-                                //           showDialog(
-                                //             context: context,
-                                //             builder: (context) => Dialog(
-                                //               shape:
-                                //                   const RoundedRectangleBorder(
-                                //                       borderRadius:
-                                //                           BorderRadius.all(
-                                //                               Radius.circular(
-                                //                                   25))),
-                                //               clipBehavior: Clip.antiAlias,
-                                //               child: Container(
-                                //                 height: 300,
-                                //                 decoration: const BoxDecoration(
-                                //                   borderRadius:
-                                //                       BorderRadius.all(
-                                //                     Radius.circular(
-                                //                       25,
-                                //                     ),
-                                //                   ),
-                                //                 ),
-                                //                 child: const SingleChildScrollView(
-                                //                     // child: Column(
-                                //                     //   children: e
-                                //                     //       .productDescription
-                                //                     //       .map<Widget>(
-                                //                     //           (e) => ListTile(
-                                //                     //                 title: Text(
-                                //                     //                     "${e[0]}"),
-                                //                     //                 subtitle: Text(
-                                //                     //                     "${e[1]}"),
-                                //                     //               ))
-                                //                     //       .toList(),
-                                //                     // ),
-                                //                     ),
-                                //               ),
-                                //             ),
-                                //           );
-                                //         },
-                                //         child: const Text("View Description"),
-                                //       ),
-                                //       Text(
-                                //         "${e.selectedItem * e.price}-\$",
-                                //         style: const TextStyle(
-                                //             fontSize: 25,
-                                //             fontWeight: FontWeight.w500),
-                                //       ),
-                                //       const SizedBox(
-                                //         height: 5,
-                                //       ),
-                                //       Row(
-                                //         mainAxisAlignment:
-                                //             MainAxisAlignment.spaceAround,
-                                //         children: [
-                                //           IconButton(
-                                //             onPressed: () {
-                                //               setState(() {
-                                //                 if (e.selectedItem > 1) {
-                                //                   e.selectedItem -= 1;
-                                //                 }
-                                //               });
-                                //             },
-                                //             icon: const Icon(Icons.remove,
-                                //                 color: Colors.red),
-                                //           ),
-                                //           Text(
-                                //             // ignore: unnecessary_string_interpolations
-                                //             "${e.selectedItem}",
-                                //             style: const TextStyle(
-                                //                 fontSize: 25,
-                                //                 fontWeight: FontWeight.w500),
-                                //           ),
-                                //           IconButton(
-                                //             onPressed: () {
-                                //               setState(
-                                //                 () {
-                                //                   e.selectedItem += 1;
-                                //                 },
-                                //               );
-                                //             },
-                                //             icon: const Icon(Icons.add,
-                                //                 color: Colors.green),
-                                //           ),
-                                //         ],
-                                //       ),
-                                //       const SizedBox(
-                                //         height: defaulHighSizeBox,
-                                //       ),
-                                //       ElevatedButton(
-                                //         style: ButtonStyle(
-                                //             backgroundColor:
-                                //                 MaterialStateProperty.all(
-                                //                     Colors.amber)),
-                                //         onPressed: () {},
-                                //         child: const Text("Order Product"),
-                                //       ),
-                                //       ElevatedButton(
-                                //         onPressed: () {
-                                //           setState(() {
-                                //             cartItem.remove(e);
-                                //           });
-                                //         },
-                                //         style: ButtonStyle(
-                                //             backgroundColor:
-                                //                 MaterialStateProperty.all(
-                                //                     Colors.red)),
-                                //         child: const Text("Remove from cart"),
-                                //       ),
-                                //     ],
-                                //   ),
-                                // )
+                                Expanded(
+                                  child: Column(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceEvenly,
+                                    children: [
+                                      TextButton(
+                                        onPressed: () {
+                                          showDialog(
+                                            context: context,
+                                            builder: (context) => Dialog(
+                                              shape:
+                                                  const RoundedRectangleBorder(
+                                                      borderRadius:
+                                                          BorderRadius.all(
+                                                              Radius.circular(
+                                                                  25))),
+                                              clipBehavior: Clip.antiAlias,
+                                              child: Container(
+                                                height: 300,
+                                                decoration: const BoxDecoration(
+                                                  borderRadius:
+                                                      BorderRadius.all(
+                                                    Radius.circular(
+                                                      25,
+                                                    ),
+                                                  ),
+                                                ),
+                                                child: const SingleChildScrollView(
+                                                    // child: Column(
+                                                    //   children: e
+                                                    //       .productDescription
+                                                    //       .map<Widget>(
+                                                    //           (e) => ListTile(
+                                                    //                 title: Text(
+                                                    //                     "${e[0]}"),
+                                                    //                 subtitle: Text(
+                                                    //                     "${e[1]}"),
+                                                    //               ))
+                                                    //       .toList(),
+                                                    // ),
+                                                    ),
+                                              ),
+                                            ),
+                                          );
+                                        },
+                                        child: const Text("View Description"),
+                                      ),
+                                      // Text(
+                                      //   "${e.selectedItem * e.attributes.price}-\$",
+                                      //   style: const TextStyle(
+                                      //       fontSize: 25,
+                                      //       fontWeight: FontWeight.w500),
+                                      // ),
+                                      Text(
+                                        "${(e.selectedItem * double.parse(e.attributes.price)).toStringAsFixed(1)}-\$",
+                                        style: const TextStyle(
+                                          fontSize: 25,
+                                          // other styles
+                                        ),
+                                      ),
+                                      const SizedBox(
+                                        height: 5,
+                                      ),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceAround,
+                                        children: [
+                                          IconButton(
+                                            onPressed: () {
+                                              setState(() {
+                                                if (e.selectedItem > 1) {
+                                                  e.selectedItem -= 1;
+                                                }
+                                              });
+                                            },
+                                            icon: const Icon(Icons.remove,
+                                                color: Colors.red),
+                                          ),
+                                          Text(
+                                            // ignore: unnecessary_string_interpolations
+                                            "${e.selectedItem}",
+                                            style: const TextStyle(
+                                                fontSize: 25,
+                                                fontWeight: FontWeight.w500),
+                                          ),
+                                          IconButton(
+                                            onPressed: () {
+                                              setState(
+                                                () {
+                                                  e.selectedItem += 1;
+                                                },
+                                              );
+                                            },
+                                            icon: const Icon(
+                                              Icons.add,
+                                              color: Colors.green,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      const SizedBox(
+                                        height: defaulHighSizeBox,
+                                      ),
+                                      ElevatedButton(
+                                        style: ButtonStyle(
+                                          backgroundColor:
+                                              MaterialStateProperty.all(
+                                                  Colors.amber),
+                                        ),
+                                        onPressed: () {},
+                                        child: const Text("Order Product"),
+                                      ),
+                                      ElevatedButton(
+                                        onPressed: () {
+                                          setState(() {
+                                            cartProducts.remove(e);
+                                          });
+                                        },
+                                        style: ButtonStyle(
+                                            backgroundColor:
+                                                MaterialStateProperty.all(
+                                                    Colors.red)),
+                                        child: const Text("Remove from cart"),
+                                      ),
+                                    ],
+                                  ),
+                                )
                               ],
                             )),
                       ))
@@ -256,7 +271,7 @@ class _AddCartScreenState extends State<AddCartScreen> {
             ),
 
             const Divider(
-              thickness: 2,
+              thickness: 1,
             ),
             // ),
             const SizedBox(
@@ -270,7 +285,7 @@ class _AddCartScreenState extends State<AddCartScreen> {
                   color: Colors.black),
             ),
             Text(
-              "Total Product  :     ${cartItem.length}\n",
+              "Total Product  :     ${cartSavePro.length}\n",
               style: const TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,

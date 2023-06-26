@@ -1,5 +1,3 @@
- 
-
 import 'dart:convert';
 
 ProductIstad productIstadFromJson(String str) =>
@@ -9,24 +7,23 @@ String productIstadToJson(ProductIstad data) => json.encode(data.toJson());
 
 class ProductIstad {
   List<ProductIstadData> data;
-  List<ProductIstadData> productdetail  ;
- 
+  List<ProductIstadData> productdetail;
 
   ProductIstad({
     required this.data,
-     required this.productdetail,
-       
-     
+    required this.productdetail,
   });
 
   factory ProductIstad.fromJson(Map<String, dynamic> json) => ProductIstad(
         data: List<ProductIstadData>.from(
-            json["data"].map((x) => ProductIstadData.fromJson(x))), productdetail: [],
+            json["data"].map((x) => ProductIstadData.fromJson(x))),
+        productdetail: [],
       );
 
   Map<String, dynamic> toJson() => {
         "data": List<dynamic>.from(data.map((x) => x.toJson())),
       };
+  
 }
 
 class ProductIstadData {
@@ -43,6 +40,11 @@ class ProductIstadData {
         id: json["id"],
         attributes: ProductIstadAttributes.fromJson(json["attributes"]),
       );
+
+  int get selectedItem => 1;
+   set selectedItem(int newValue) {
+    selectedItem = newValue;
+  }
 
   Map<String, dynamic> toJson() => {
         "id": id,
