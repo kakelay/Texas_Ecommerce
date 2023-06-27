@@ -6,7 +6,7 @@ import 'package:istad_project_ecommerce/models/response/product_card.dart';
 
 import '../../constants.dart';
 import '../add_cart/add_cart.dart';
-import '../save_card/save_cart.dart';
+ 
 
 class DetailsScreen extends StatelessWidget {
   DetailsScreen({Key? key, required this.productIstadData}) : super(key: key);
@@ -148,21 +148,21 @@ class DetailsScreen extends StatelessWidget {
 
                           ///  command tesing  2
 
-                          child: ElevatedButton(
-                            onPressed: () {
-                              cartProducts.add(productIstadData);
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        const SaveCartScreen()),
-                              );
-                            },
-                            style: ElevatedButton.styleFrom(
-                                backgroundColor: primaryColor,
-                                shape: const StadiumBorder()),
-                            child: const Text("Save Product"),
-                          ),
+                          // child: ElevatedButton(
+                          //   onPressed: () {
+                          //     cartProducts.add(productIstadData);
+                          //     Navigator.push(
+                          //       context,
+                          //       MaterialPageRoute(
+                          //           builder: (context) =>
+                          //               const SaveCartScreen()),
+                          //     );
+                          //   },
+                          //   style: ElevatedButton.styleFrom(
+                          //       backgroundColor: primaryColor,
+                          //       shape: const StadiumBorder()),
+                          //   child: const Text("Save Product"),
+                          // ),
                         ),
                       ),
                     ],

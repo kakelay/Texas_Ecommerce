@@ -23,7 +23,6 @@ class ProductIstad {
   Map<String, dynamic> toJson() => {
         "data": List<dynamic>.from(data.map((x) => x.toJson())),
       };
-  
 }
 
 class ProductIstadData {
@@ -42,7 +41,8 @@ class ProductIstadData {
       );
 
   int get selectedItem => 1;
-   set selectedItem(int newValue) {
+
+  set selectedItem(int newValue) {
     selectedItem = newValue;
   }
 

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../constants.dart';
-import '../../../models/Product.dart';
+ 
 import '../../order_product/order_product.dart';
 
 class CartButton extends StatefulWidget {
@@ -23,6 +23,7 @@ class _CartButtonState extends State<CartButton> {
   Widget build(BuildContext context) {
     // ignore: unused_local_variable
 
+  //  int  selectedItem = 1;
     int totalAmount = 0;
     // for (var element in cartItem) {
     //   // totalAmount += element.price* element.selectedItem;
@@ -239,7 +240,7 @@ class _CartButtonState extends State<CartButton> {
           ),
 
           const Divider(
-            thickness: 2,
+            thickness: 5,
           ),
           // ),
           const SizedBox(

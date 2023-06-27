@@ -138,7 +138,7 @@ class _NewArrivalProductsState extends State<NewArrivalProducts> {
                   );
                 case Status.COMPLETE:
                   print(" print completed-----------------");
-                 
+
                   return SizedBox(
                     height: 280,
                     width: 500,
@@ -163,7 +163,6 @@ class _NewArrivalProductsState extends State<NewArrivalProducts> {
                         );
                       },
                     ),
-                  
                   );
 
                 default:

@@ -8,7 +8,7 @@ import 'package:istad_project_ecommerce/views/home/buttons_nav_bar_body/home_but
 import 'package:istad_project_ecommerce/views/home/buttons_nav_bar_body/personal_button.dart';
 import 'package:istad_project_ecommerce/views/home/buttons_nav_bar_body/qr_code_button.dart';
 import 'package:istad_project_ecommerce/views/home/buttons_nav_bar_body/notification_button.dart';
-import 'package:istad_project_ecommerce/views/save_card/save_cart.dart';
+ 
 
 import 'widgets/drawer.dart';
 
@@ -142,23 +142,23 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ),
         actions: [
-          IconButton(
-            icon: CircleAvatar(
-              backgroundColor: Colors.white,
-              child: SvgPicture.asset(
-                "assets/icons/save.svg",
-                height: 20,
-              ),
-            ),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const SaveCartScreen(),
-                ),
-              );
-            },
-          ),
+          // IconButton(
+          //   icon: CircleAvatar(
+          //     backgroundColor: Colors.white,
+          //     child: SvgPicture.asset(
+          //       "assets/icons/save.svg",
+          //       height: 20,
+          //     ),
+          //   ),
+          //   onPressed: () {
+          //     Navigator.push(
+          //       context,
+          //       MaterialPageRoute(
+          //         builder: (context) => const SaveCartScreen(),
+          //       ),
+          //     );
+          //   },
+          // ),
 
           //more widgets to place here
         ],

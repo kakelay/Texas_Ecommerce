@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:istad_project_ecommerce/constants.dart';
-import 'package:istad_project_ecommerce/models/Product.dart';
+ 
 
 import 'package:istad_project_ecommerce/views/order_product/order_product.dart';
-
- 
 
 class AddCartScreen extends StatefulWidget {
   const AddCartScreen({super.key});
@@ -18,16 +16,16 @@ class _AddCartScreenState extends State<AddCartScreen> {
   void initState() {
     super.initState();
 
-   cartSavePro = cartSavePro.toSet().toList();
+    cartSavePro = cartSavePro.toSet().toList();
   }
 
-  late int totalAmount;
+  // late int totalAmount;
 
   @override
   Widget build(BuildContext context) {
     // ignore: unused_local_variable
     int selectedItem = 1;
-    totalAmount = 0;
+  int   totalAmount = 0;
     // for (var element in cartItem) {
     //   // totalAmount += element.price* element.selectedItem;
     //   totalAmount += element.price * 1;
@@ -36,9 +34,9 @@ class _AddCartScreenState extends State<AddCartScreen> {
     // cartItem.forEach((element) {
     //   totalAmount += element.price * element.selectedItem;
     // });
-  //  cartSavePro.forEach((element) {
-  //     totalAmount += (element.attributes.price * element.selectedItem) as int;
-  //   });
+    //  cartSavePro.forEach((element) {
+    //     totalAmount += (element.attributes.price * element.selectedItem) as int;
+    //   });
 
     return Scaffold(
       appBar: AppBar(
@@ -252,7 +250,7 @@ class _AddCartScreenState extends State<AddCartScreen> {
                                       ElevatedButton(
                                         onPressed: () {
                                           setState(() {
-                                            cartProducts.remove(e);
+                                            cartSavePro.remove(e);
                                           });
                                         },
                                         style: ButtonStyle(
@@ -278,7 +276,7 @@ class _AddCartScreenState extends State<AddCartScreen> {
               height: defaulHighSizeBox * 2,
             ),
             Text(
-              "Total Amount  :  $totalAmount -\$",
+              "Total Amount  :  ${totalAmount} -\$",
               style: const TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
