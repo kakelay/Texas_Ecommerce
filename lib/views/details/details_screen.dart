@@ -1,4 +1,4 @@
-// ignore_for_file: must_be_immutable
+// ignore_for_file: must_be_immutable, unnecessary_string_interpolations
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -6,7 +6,6 @@ import 'package:istad_project_ecommerce/models/response/product_card.dart';
 
 import '../../constants.dart';
 import '../add_cart/add_cart.dart';
- 
 
 class DetailsScreen extends StatelessWidget {
   DetailsScreen({Key? key, required this.productIstadData}) : super(key: key);
@@ -15,8 +14,14 @@ class DetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print('-------------------------------+++++++++++++++++++++++++++++++++++');
+    print(
+      productIstadData.attributes.thumbnail.data.attributes.url,
+    );
+
     return Scaffold(
       // backgroundColor: product.bgColor,
+
       appBar: AppBar(
         leading: const BackButton(color: Colors.black),
         title: const Text(
@@ -39,21 +44,26 @@ class DetailsScreen extends StatelessWidget {
           )
         ],
       ),
-      body: Column(
+      body: ListView(
+        physics: const AlwaysScrollableScrollPhysics(),
+        shrinkWrap: true,
         children: [
-          Image.network(
-            productIstadData.attributes.category.data.attributes.iconUrl,
-            height: MediaQuery.of(context).size.height * 0.4,
-            fit: BoxFit.cover,
+          Container(
+            height: 400,
+            child: Image.network(
+              'https://cms.istad.co${productIstadData.attributes.thumbnail.data.attributes.url}',
+              height: MediaQuery.of(context).size.height * 0.4,
+              fit: BoxFit.cover,
+            ),
           ),
-          const SizedBox(height: defaultPadding * 1.5),
+          const SizedBox(height: defaultPadding * 2),
           Expanded(
             child: Container(
               padding: const EdgeInsets.fromLTRB(defaultPadding,
                   defaultPadding * 2, defaultPadding, defaultPadding),
-              decoration: const BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.only(
+              decoration: BoxDecoration(
+                color: Colors.grey.shade200,
+                borderRadius: const BorderRadius.only(
                   topLeft: Radius.circular(defaultBorderRadius * 3),
                   topRight: Radius.circular(defaultBorderRadius * 3),
                 ),
@@ -65,38 +75,53 @@ class DetailsScreen extends StatelessWidget {
                     children: [
                       Expanded(
                         child: Text(
-                          // ignore: unnecessary_string_interpolations
                           '${productIstadData.attributes.title}',
-                          style: const TextStyle(color: Colors.black),
+                          style: const TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 20),
                         ),
                       ),
                       const SizedBox(width: defaultPadding),
-                      // Text(
-                      //   // ignore: prefer_interpolation_to_compose_strings
-                      //   "US \$" + product2.price,
-                      //   style: Theme.of(context).textTheme.titleLarge,
-                      // ),
                       Text(
                         "\$${productIstadData.attributes.price}",
-                        style: Theme.of(context).textTheme.titleSmall,
+                        style: const TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 20),
                       ),
                     ],
                   ),
-                  const Padding(
-                    padding: EdgeInsets.symmetric(vertical: defaultPadding),
+                  Padding(
+                    padding:
+                        const EdgeInsets.symmetric(vertical: defaultPadding),
                     child: Text(
-                      "A Henley shirt is a collarless pullover shirt, by a round neckline and a placket about 3 to 5 inches (8 to 13 cm) long and usually having 2–5 buttons.",
+                      "\$${productIstadData.attributes.description}",
                     ),
                   ),
-                  // Text(
-                  //   "Rating : ${product2.rating}",
-                  //   style: Theme.of(context).textTheme.titleSmall,
-                  // ),
                   Text(
-                    "\$${productIstadData.attributes.price}",
-                    style: Theme.of(context).textTheme.titleSmall,
+                    "Instock: ${productIstadData.attributes.quantity}",
+                    style: const TextStyle(
+                        fontWeight: FontWeight.bold, fontSize: 20),
                   ),
-                  const SizedBox(height: defaultPadding / 2),
+               
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Row(
+                        children: [
+                          SvgPicture.asset(
+                            "assets/icons/favorite.svg",
+                            height: 25,
+                          ),
+                          SvgPicture.asset(
+                            "assets/icons/favorite.svg",
+                            height: 25,
+                          ),
+                          SvgPicture.asset(
+                            "assets/icons/favorite.svg",
+                            height: 25,
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
                   const SizedBox(height: defaultPadding * 2),
                   Column(
                     children: [
@@ -104,23 +129,6 @@ class DetailsScreen extends StatelessWidget {
                         child: SizedBox(
                           width: 200,
                           height: 48,
-                          // child: ElevatedButton(
-                          //   onPressed: () {
-                          //     Navigator.push(
-                          //       context,
-                          //       MaterialPageRoute(
-                          //           builder: (context) => const AddCardScreen()),
-                          //     );
-                          //   },
-                          //   style: ElevatedButton.styleFrom(
-                          //       backgroundColor: primaryColor,
-                          //       shape: const StadiumBorder()),
-                          //   child: const Text("Add to Card"),
-
-                          // ),
-
-                          //  command  testing1
-
                           child: ElevatedButton(
                             onPressed: () {
                               cartSavePro.add(productIstadData);

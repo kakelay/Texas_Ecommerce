@@ -102,8 +102,8 @@
 //                                     //   fit: BoxFit.fitHeight,
 //                                     // ),
 //                                     child: Image.network(
-//                                       e.attributes.category.data.attributes
-//                                           .iconUrl,
+//                                      'https://cms.istad.co${e.attributes. thumbnail.data.attributes.url}',
+                                           
 //                                       width: 200,
 //                                       height: 200,
 //                                       fit: BoxFit.cover,

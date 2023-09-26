@@ -216,7 +216,10 @@
 //   }
 // }
 
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:istad_project_ecommerce/models/response/product_card.dart';
 
 // ignore: must_be_immutable
@@ -231,26 +234,55 @@ class AllProdcutList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print(
+        '+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++');
+    print(
+      data.attributes.thumbnail.data.attributes.url,
+    );
+
     return GestureDetector(
       onTap: press,
       child: Column(
+        mainAxisSize: MainAxisSize.min,
         children: [
-          Container(
-            height: 180,
-            width: 180,
-            padding: const EdgeInsets.all(18),
-            decoration: const BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(15)),
-              color: Colors.white,
-            ),
-            child: Image.network(
-              data.attributes.category.data.attributes.iconUrl,
+          Expanded(
+            child: Container(
+              decoration: BoxDecoration(
+                color: Colors.amber,
+                borderRadius: const BorderRadius.all(Radius.circular(4)),
+                image: DecorationImage(
+                  image: NetworkImage(
+                    'https://cms.istad.co${data.attributes.thumbnail.data.attributes.url}',
+                  ),
+                  fit: BoxFit.cover,
+                ),
+                shape: BoxShape.rectangle,
+              ),
             ),
           ),
-          Text(
-            // ignore: unnecessary_string_interpolations
-            '${data.attributes.title}',
-            style: const TextStyle(fontWeight: FontWeight.bold),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                "\$${data.attributes.price}",
+                style: const TextStyle(fontWeight: FontWeight.bold),
+              ),
+              SvgPicture.asset(
+                "assets/icons/add.svg",
+                height: 20,
+              ),
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Expanded(
+                child: Text(
+                  "${data.attributes.title}",
+                  style: const TextStyle(fontWeight: FontWeight.w400),
+                ),
+              ),
+            ],
           ),
         ],
       ),

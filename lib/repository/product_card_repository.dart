@@ -5,11 +5,11 @@ import 'package:istad_project_ecommerce/res/app_url.dart';
 class ProductIstadeRepository {
   final NetworkApiService _apiService = NetworkApiService();
 
-  Future<ProductIstad> getProdutIstad() async {
+  Future<ProductIstadModel> getProdutIstad() async {
     try {
       dynamic response =
           await _apiService.getApiRespones(AppUrl.allProductIstad);
-      return response = ProductIstad.fromJson(response);
+      return response = ProductIstadModel.fromJson(response);
     } catch (e) {
       rethrow;
     }

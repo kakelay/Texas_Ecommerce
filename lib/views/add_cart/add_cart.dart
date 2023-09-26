@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:istad_project_ecommerce/constants.dart';
- 
 
 import 'package:istad_project_ecommerce/views/order_product/order_product.dart';
 
@@ -25,7 +24,7 @@ class _AddCartScreenState extends State<AddCartScreen> {
   Widget build(BuildContext context) {
     // ignore: unused_local_variable
     int selectedItem = 1;
-  int   totalAmount = 0;
+    int totalAmount = 0;
     // for (var element in cartItem) {
     //   // totalAmount += element.price* element.selectedItem;
     //   totalAmount += element.price * 1;
@@ -100,9 +99,9 @@ class _AddCartScreenState extends State<AddCartScreen> {
                                         //   height: 200,
                                         //   fit: BoxFit.fitHeight,
                                         // ),
+
                                         child: Image.network(
-                                          e.attributes.category.data.attributes
-                                              .iconUrl,
+                                          'https://cms.istad.co${e.attributes.thumbnail.data.attributes.url}',
                                           width: 200,
                                           height: 200,
                                           fit: BoxFit.cover,
@@ -204,21 +203,26 @@ class _AddCartScreenState extends State<AddCartScreen> {
                                         children: [
                                           IconButton(
                                             onPressed: () {
+                                              print('================================');
+                                              print(e.selectedItem);
                                               setState(() {
                                                 if (e.selectedItem > 1) {
                                                   e.selectedItem -= 1;
                                                 }
                                               });
                                             },
-                                            icon: const Icon(Icons.remove,
-                                                color: Colors.red),
+                                            icon: const Icon(
+                                              Icons.remove,
+                                              color: Colors.red,
+                                            ),
                                           ),
                                           Text(
                                             // ignore: unnecessary_string_interpolations
                                             "${e.selectedItem}",
                                             style: const TextStyle(
-                                                fontSize: 25,
-                                                fontWeight: FontWeight.w500),
+                                              fontSize: 25,
+                                              fontWeight: FontWeight.w500,
+                                            ),
                                           ),
                                           IconButton(
                                             onPressed: () {
@@ -267,11 +271,6 @@ class _AddCartScreenState extends State<AddCartScreen> {
                       ))
                   .toList(),
             ),
-
-            const Divider(
-              thickness: 1,
-            ),
-            // ),
             const SizedBox(
               height: defaulHighSizeBox * 2,
             ),
@@ -289,23 +288,6 @@ class _AddCartScreenState extends State<AddCartScreen> {
                   fontWeight: FontWeight.bold,
                   color: Colors.black),
             ),
-
-            /// order all products
-            // ElevatedButton(
-            //   onPressed: () {
-            //     setState(() {
-            //       //cartItem.remove(e);
-            //     });
-            //   },
-            //   style: ButtonStyle(
-            //       backgroundColor: MaterialStateProperty.all(Colors.redAccent)),
-            //   child: const Text(
-            //     "Order All Product",
-            //     style: TextStyle(
-            //       fontSize: 16,
-            //     ),
-            //   ),
-            // ),
             const SizedBox(
               height: defaulHighSizeBox * 2,
             ),
@@ -328,12 +310,6 @@ class _AddCartScreenState extends State<AddCartScreen> {
                   style: TextStyle(fontSize: 20),
                 ),
               ),
-            ),
-            const Divider(
-              thickness: 2,
-            ),
-            const SizedBox(
-              height: defaulHighSizeBox,
             ),
           ],
         ),

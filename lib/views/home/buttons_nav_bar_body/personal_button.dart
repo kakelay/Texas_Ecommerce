@@ -50,18 +50,21 @@ class _PersonalButtonState extends State<PersonalButton> {
               child: Column(
                 // mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  const Text(
-                    "EXSITING CUSTOMER",
-                    style: TextStyle(
-                      fontSize: 35,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
+                  const Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: Text(
+                      "EXSITING CUSTOMER",
+                      style: TextStyle(
+                        fontSize: 35,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black,
+                      ),
                     ),
                   ),
                   const SizedBox(
                     height: defaulHighSizeBox,
                   ),
-    
+
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: IntlPhoneField(
@@ -77,12 +80,12 @@ class _PersonalButtonState extends State<PersonalButton> {
                       },
                     ),
                   ),
-    
+
                   ///  text new update
                   const SizedBox(
                     height: defaulHighSizeBox,
                   ),
-    
+
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: TextFormField(
@@ -107,27 +110,30 @@ class _PersonalButtonState extends State<PersonalButton> {
                     ),
                   ),
                   const SizedBox(
-                    height: defaulHighSizeBox * 3.5,
+                    height: defaulHighSizeBox * 1.5,
                   ),
-                  ElevatedButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const MyHomePage(title: ""),
-                        ),
-                      );
-                    },
-                    style:
-                        ElevatedButton.styleFrom(backgroundColor: Colors.black),
-                    child: const SizedBox(
-                      width: 400,
-                      height: 60,
-                      child: Center(
-                        child: Text(
-                          'LOG IN',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 20),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const MyHomePage(title: ""),
+                          ),
+                        );
+                      },
+                      style:
+                          ElevatedButton.styleFrom(backgroundColor: Colors.black),
+                      child: const SizedBox(
+                        width: 400,
+                        height: 60,
+                        child: Center(
+                          child: Text(
+                            'LOG IN',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 20),
+                          ),
                         ),
                       ),
                     ),
@@ -153,30 +159,35 @@ class _PersonalButtonState extends State<PersonalButton> {
                   const SizedBox(
                     height: defaulHighSizeBox,
                   ),
-                  ElevatedButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const RegisterPage()),
-                      );
-                    },
-                    style:
-                        ElevatedButton.styleFrom(backgroundColor: Colors.black),
-                    child: const SizedBox(
-                      width: 400,
-                      height: 60,
-                      child: Center(
-                        child: Text(
-                          'REGISTER',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 20),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const RegisterPage()),
+                        );
+                      },
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.black),
+                      child: const SizedBox(
+                        width: 400,
+                        height: 60,
+                        child: Center(
+                          child: Text(
+                            'REGISTER',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20,
+                            ),
+                          ),
                         ),
                       ),
                     ),
                   ),
                   const SizedBox(
-                    height: defaulHighSizeBox,
+                    height: defaulHighSizeBox/2,
                   ),
                   TextButton(
                     onPressed: () {

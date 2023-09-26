@@ -57,6 +57,9 @@ dependencies:
   provider:
   shared_preferences:
   image_picker:
+  qr_code_scanner: ^1.0.1
+  
+ 
 
 dev_dependencies:
   flutter_test:

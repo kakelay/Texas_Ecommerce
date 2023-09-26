@@ -48,15 +48,9 @@ class _HomeButtonState extends State<HomeButton> {
             ),
             const Text(
               "best Outfits for you",
-              style: TextStyle(fontSize: 16),
+              style: TextStyle(fontSize: 16,fontWeight:  FontWeight.w700),
             ),
-            // const Padding(
-            //   padding: EdgeInsets.symmetric(vertical: defaultPadding),
-            //   child: SearchForm(),
-            // ),
-            //  const Categories(),
-
-            // slide image
+           
             Padding(
               padding: const EdgeInsets.all(defaultPadding),
               child: FanCarouselImageSlider(

@@ -23,7 +23,7 @@ class _QRViewExampleState extends State<QRViewExample> {
             height: defaulHighSizeBox * 8,
           ),
           Padding(
-            padding: const EdgeInsets.all(50.0),
+            padding: const EdgeInsets.all(60.0),
             child: ElevatedButton(
               autofocus: true,
               onPressed: () {

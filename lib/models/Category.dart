@@ -28,53 +28,5 @@ List<Category> demo_categories = [
     icon: "https://i.pinimg.com/474x/c4/f3/b4/c4f3b4f87acfeaa82a357b289c13263b.jpg",
     title: "Computer, Laptops, Office equipments",
   ),
-  // Category(
-  //   icon: "assets/icons/shirt.svg",
-  //   title: "Shirt",
-  // ),
-  // Category(
-  //   icon: "assets/icons/pants.svg",
-  //   title: "Pants",
-  // ),
-  // Category(
-  //   icon: "assets/icons/Tshirt.svg",
-  //   title: "Tshirt",
-  // ),
-  // Category(
-  //   icon: "assets/icons/dress.svg",
-  //   title: "Dress",
-  // ),
-  // Category(
-  //   icon: "assets/icons/shirt.svg",
-  //   title: "Shirt",
-  // ),
-  // Category(
-  //   icon: "assets/icons/pants.svg",
-  //   title: "Pants",
-  // ),
-  // Category(
-  //   icon: "assets/icons/Tshirt.svg",
-  //   title: "Tshirt",
-  // ),
-  // Category(
-  //   icon: "assets/icons/dress.svg",
-  //   title: "Dress",
-  // ),
-  // Category(
-  //   icon: "assets/icons/shirt.svg",
-  //   title: "Shirt",
-  // ),
-  // Category(
-  //   icon: "assets/icons/pants.svg",
-  //   title: "Pants",
-  // ),
-  // Category(
-  //   icon: "assets/icons/Tshirt.svg",
-  //   title: "Tshirt",
-  // ),
-  // Category(
-  //   icon: "assets/icons/dress.svg",
-  //   title: "Dress",
-  // ),
-  
+ 
 ];

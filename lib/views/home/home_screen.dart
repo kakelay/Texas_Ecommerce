@@ -40,7 +40,7 @@ class _MyHomePageState extends State<MyHomePage> {
   final List<Widget> _pages = [
     const CartButton(),
     // const SearchForm(),
-    const QRViewExample(),
+    const   QRViewExample(),
     const HomeButton(),
     const Notificationbutton(),
     const PersonalButton(),

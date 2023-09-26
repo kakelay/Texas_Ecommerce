@@ -116,9 +116,10 @@ class _NewArrivalProductsState extends State<NewArrivalProducts> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => AllProduct(
-                          productList: productList,
-                        )),
+                  builder: (context) => AllProduct(
+                    productList: productList,
+                  ),
+                ),
               );
             },
           ),
@@ -137,10 +138,11 @@ class _NewArrivalProductsState extends State<NewArrivalProducts> {
                     ),
                   );
                 case Status.COMPLETE:
-                  print(" print completed-----------------");
+                  print(" print completed-------11----------");
 
-                  return SizedBox(
-                    height: 280,
+                  return Container(
+                    
+                    height: 450,
                     width: 500,
                     child: ListView.builder(
                       scrollDirection: Axis.horizontal,
@@ -149,7 +151,7 @@ class _NewArrivalProductsState extends State<NewArrivalProducts> {
                         return ProductCard(
                           data: value.productistads.data!.data[index],
                           press: () {
-                            // value.productistads.data!.data[index];
+                            value.productistads.data!.data[index];
                             Navigator.push(
                               context,
                               MaterialPageRoute(

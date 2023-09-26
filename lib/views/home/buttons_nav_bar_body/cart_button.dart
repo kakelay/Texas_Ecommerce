@@ -86,8 +86,9 @@ class _CartButtonState extends State<CartButton> {
                             //   height: 200,
                             //   fit: BoxFit.fitHeight,
                             // ),
+                            
                             child: Image.network(
-                              e.attributes.category.data.attributes.iconUrl,
+                              'https://cms.istad.co${e.attributes.thumbnail.data.attributes.url}',
                               width: 200,
                               height: 200,
                               fit: BoxFit.cover,
@@ -288,7 +289,7 @@ class _CartButtonState extends State<CartButton> {
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: primaryColor,
-                shape: const StadiumBorder(),
+                // shape: const StadiumBorder(),
               ),
               child: const Text(
                 "Order All Product",

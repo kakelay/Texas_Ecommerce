@@ -1,4 +1,3 @@
- 
 import 'package:flutter/material.dart';
 import 'package:istad_project_ecommerce/models/response/product_card.dart';
 import 'package:istad_project_ecommerce/views/all_product/widgets/all_product_list.dart';
@@ -58,10 +57,8 @@ class _AllProductState extends State<AllProduct> {
         appBar: AppBar(
           title: isSearchTapped
               ? TextField(
-                decoration: InputDecoration(
-                  hintText: hintText,
-                  fillColor: Colors.black
-                ),
+                  decoration: InputDecoration(
+                      hintText: hintText, fillColor: Colors.black),
                   onChanged: (value) => (value),
                 )
               : const Text(
@@ -77,7 +74,6 @@ class _AllProductState extends State<AllProduct> {
                         setState(() {
                           isSearchTapped = false;
                         });
-                      
                       },
                       icon: const Icon(
                         Icons.clear,
@@ -101,57 +97,54 @@ class _AllProductState extends State<AllProduct> {
                   ),
           ],
           leading: IconButton(
-            icon: const Icon(Icons.arrow_back_ios, color: Colors.black),
+            icon: const Icon(
+              Icons.arrow_back_ios,
+              color: Colors.black,
+            ),
             onPressed: () => Navigator.of(context).pop(),
           ),
         ),
-        body: Column(
-          children: [
-            ChangeNotifierProvider<ProductIstadeViewModel>(
-              create: (context) => productistasViewModel,
-              child: Consumer<ProductIstadeViewModel>(
-                builder: (context, value, child) {
-                  switch (value.productistads.status) {
-                    case Status.LOADING:
-                      return const Center(
-                        child: CircularProgressIndicator(),
+        body: ChangeNotifierProvider<ProductIstadeViewModel>(
+          create: (context) => productistasViewModel,
+          child: Consumer<ProductIstadeViewModel>(
+            builder: (context, value, child) {
+              switch (value.productistads.status) {
+                case Status.LOADING:
+                  return const Center(
+                    child: CircularProgressIndicator(),
+                  );
+                case Status.COMPLETE:
+                  return GridView.builder(
+                    scrollDirection: Axis.vertical,
+                    itemCount: value.productistads.data!.data.length,
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      crossAxisSpacing: 2.0,
+                      mainAxisSpacing: 2.0,
+                    ),
+                    itemBuilder: (BuildContext context, index) {
+                      return AllProdcutList(
+                        data: value.productistads.data!.data[index],
+                        press: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => DetailsScreen(
+                                productIstadData:
+                                    value.productistads.data!.data[index],
+                              ),
+                            ),
+                          );
+                        },
                       );
-                    case Status.COMPLETE:
-                      return Expanded(
-                        child: GridView.builder(
-                          scrollDirection: Axis.vertical,
-                          itemCount: value.productistads.data!.data.length,
-                          gridDelegate:
-                              const SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 2,
-                            crossAxisSpacing: 4,
-                            mainAxisSpacing: 4,
-                          ),
-                          itemBuilder: (BuildContext context, index) {
-                            return AllProdcutList(
-                              data: value.productistads.data!.data[index],
-                              press: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => DetailsScreen(
-                                      productIstadData:
-                                          value.productistads.data!.data[index],
-                                    ),
-                                  ),
-                                );
-                              },
-                            );
-                          },
-                        ),
-                      );
-                    default:
-                      return const CircularProgressIndicator();
-                  }
-                },
-              ),
-            ),
-          ],
+                    },
+                  );
+                default:
+                  return const CircularProgressIndicator();
+              }
+            },
+          ),
         ));
   }
 }
