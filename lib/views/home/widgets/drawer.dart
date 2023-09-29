@@ -1,4 +1,12 @@
+// ignore_for_file: deprecated_member_use
+
+import 'package:contactus/contactus.dart';
 import 'package:flutter/material.dart';
+import 'package:istad_project_ecommerce/views/existing_customer/contact_us.dart';
+import 'package:istad_project_ecommerce/views/order_history/order_history.dart';
+import 'package:istad_project_ecommerce/views/settings/settings.dart';
+import 'package:istad_project_ecommerce/views/texas_center/texas_center.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class DrawerPage extends StatelessWidget {
   const DrawerPage({
@@ -10,11 +18,9 @@ class DrawerPage extends StatelessWidget {
     return Drawer(
       backgroundColor: Colors.grey[50],
       child: ListView(
-        
         padding: EdgeInsets.zero,
         children: [
           DrawerHeader(
-            
             decoration: const BoxDecoration(
               color: Colors.grey,
             ),
@@ -28,7 +34,7 @@ class DrawerPage extends StatelessWidget {
                       borderRadius: const BorderRadius.all(
                         Radius.circular(100),
                       ),
-                      child: Image.asset('assets/images/kakelay.PNG'),
+                      child: Image.asset('assets/images/p1.png'),
                     ),
                   ),
                 ),
@@ -88,26 +94,19 @@ class DrawerPage extends StatelessWidget {
               color: Colors.black,
             ),
             title: const Text(
-              'Payment',
+              'Order History',
               style: TextStyle(color: Colors.black),
             ),
             onTap: () {
               Navigator.pop(context);
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const OrderHistory(),
+                ),
+              );
             },
           ),
-          // ListTile(
-          //   leading: const Icon(
-          //     Icons.list,
-          //     color: Colors.black,
-          //   ),
-          //   title: const Text(
-          //     'មូលប្បទានបត្រ',
-          //     style: TextStyle(color: Colors.black),
-          //   ),
-          //   onTap: () {
-          //     Navigator.pop(context);
-          //   },
-          // ),
           ListTile(
             leading: const Icon(
               Icons.location_on,
@@ -119,6 +118,12 @@ class DrawerPage extends StatelessWidget {
             ),
             onTap: () {
               Navigator.pop(context);
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const TexasCenter(),
+                ),
+              );
             },
           ),
           ListTile(
@@ -136,19 +141,6 @@ class DrawerPage extends StatelessWidget {
           ),
           ListTile(
             leading: const Icon(
-              Icons.person_add,
-              color: Colors.black,
-            ),
-            title: const Text(
-              'Invite freined',
-              style: TextStyle(color: Colors.black),
-            ),
-            onTap: () {
-              Navigator.pop(context);
-            },
-          ),
-          ListTile(
-            leading: const Icon(
               Icons.phone_in_talk,
               color: Colors.black,
             ),
@@ -158,19 +150,12 @@ class DrawerPage extends StatelessWidget {
             ),
             onTap: () {
               Navigator.pop(context);
-            },
-          ),
-          ListTile(
-            leading: const Icon(
-              Icons.list_alt,
-              color: Colors.black,
-            ),
-            title: const Text(
-              'Condition',
-              style: TextStyle(color: Colors.black),
-            ),
-            onTap: () {
-              Navigator.pop(context);
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const ContactUsPage(),
+                ),
+              );
             },
           ),
           ListTile(
@@ -184,6 +169,48 @@ class DrawerPage extends StatelessWidget {
             ),
             onTap: () {
               Navigator.pop(context);
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const SettingPage(),
+                ),
+              );
+            },
+          ),
+           ListTile(
+            leading: const Icon(
+              Icons.school_rounded,
+              color: Colors.black,
+            ),
+            title: const Text(
+              'Study at CSTAD',
+              style: TextStyle(color: Colors.black),
+            ),
+            onTap: () async {
+              const url = 'https://www.istad.co/';
+              if (await canLaunch(url)) {
+                await launch(url);
+              } else {
+                throw 'Could not launch $url';
+              }
+            },
+          ),
+          ListTile(
+            leading: const Icon(
+              Icons.developer_mode,
+              color: Colors.black,
+            ),
+            title: const Text(
+              'Develop by KakElay',
+              style: TextStyle(color: Colors.black),
+            ),
+            onTap: () async {
+              const url = 'https://kakelay.com/';
+              if (await canLaunch(url)) {
+                await launch(url);
+              } else {
+                throw 'Could not launch $url';
+              }
             },
           ),
         ],

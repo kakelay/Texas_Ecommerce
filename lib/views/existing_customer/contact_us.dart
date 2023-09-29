@@ -13,12 +13,18 @@ class _ContactUsPageState extends State<ContactUsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: const BackButton(color: Colors.black),
-        centerTitle: false,
         title: const Text(
           "Contact US ",
           style: TextStyle(color: Colors.black, fontSize: 20),
         ),
+        leading: IconButton(
+          icon: const Icon(
+            Icons.arrow_back_ios,
+            color: Colors.black,
+          ),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
+        centerTitle: false,
       ),
       bottomNavigationBar: ContactUsBottomAppBar(
         companyName: 'Kak Elay',
@@ -37,13 +43,13 @@ class _ContactUsPageState extends State<ContactUsPage> {
         companyColor: Colors.black,
         dividerThickness: 2,
         dividerColor: Colors.black,
+        website: 'https://kakelay.com',
         phoneNumber: '+88510600261',
-        // website: 'https://github.com/kakelay',
         githubUserName: 'kakelay',
         tagLine: 'Flutter Developer',
         taglineColor: Colors.black45,
         // twitterHandle: 'KakElay',
-        instagram: 'KakElay',
+        //instagram: 'KakElay',
         facebookHandle: 'Kak Elay',
       ),
     );

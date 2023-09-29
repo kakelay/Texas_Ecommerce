@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:istad_project_ecommerce/constants.dart';
+import 'package:lottie/lottie.dart';
 
 class Notificationbutton extends StatefulWidget {
   const Notificationbutton({super.key});
@@ -12,19 +13,24 @@ class Notificationbutton extends StatefulWidget {
 class _NotificationbuttonState extends State<Notificationbutton> {
   @override
   Widget build(BuildContext context) {
-    return const SliverToBoxAdapter(
+    return SliverToBoxAdapter(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          SizedBox(
+          const SizedBox(
             height: defaulHighSizeBox * 2,
           ),
-          Text(
+          const Text(
             " Your notification is empty!",
             style: TextStyle(
               fontSize: 22,
               color: Colors.black,
             ),
+          ),
+          Lottie.asset(
+            height: 400,
+            fit: BoxFit.cover,
+            'assets/lotties/empty.json',
           ),
         ],
       ),

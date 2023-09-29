@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import '../../../constants.dart';
 import '../../../models/SlideImage.dart';
 
-import '../widgets/followus.dart';
+import '../widgets/follow_us.dart';
 import '../widgets/new_arrival_products.dart';
 
 class HomeButton extends StatefulWidget {

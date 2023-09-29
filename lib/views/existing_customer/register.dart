@@ -1,4 +1,5 @@
 // ignore_for_file: non_constant_identifier_names
+import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:country_picker_plus/country_picker_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
@@ -275,6 +276,23 @@ class _RegisterPageState extends State<RegisterPage> {
                     MaterialPageRoute(
                         builder: (context) => const MyHomePage(title: "")),
                   );
+                  final materialBanner = MaterialBanner(
+                    elevation: 0,
+                    backgroundColor: Colors.transparent,
+                    forceActionsBelow: true,
+                    content: AwesomeSnackbarContent(
+                      title: 'Register Successfully',
+                      message:
+                          'You have been register successfully with this app.',
+                      contentType: ContentType.success,
+                      inMaterialBanner: true,
+                    ),
+                    actions: const [SizedBox.shrink()],
+                  );
+
+                  ScaffoldMessenger.of(context)
+                    ..hideCurrentMaterialBanner()
+                    ..showMaterialBanner(materialBanner);
                 },
                 style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
                 child: const SizedBox(

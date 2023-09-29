@@ -247,11 +247,11 @@ class _CartButtonState extends State<CartButton> {
           const SizedBox(
             height: defaulHighSizeBox * 2,
           ),
-          Text(
-            "Total Amount  :  $totalAmount -\$",
-            style: const TextStyle(
-                fontSize: 18, fontWeight: FontWeight.bold, color: Colors.black),
-          ),
+          // Text(
+          //   "Total Amount  :  $totalAmount -\$",
+          //   style: const TextStyle(
+          //       fontSize: 18, fontWeight: FontWeight.bold, color: Colors.black),
+          // ),
           Text(
             "Total Product  :     ${cartSavePro.length}\n",
             style: const TextStyle(
@@ -288,7 +288,7 @@ class _CartButtonState extends State<CartButton> {
                 );
               },
               style: ElevatedButton.styleFrom(
-                backgroundColor: primaryColor,
+                backgroundColor: Colors.black,
                 // shape: const StadiumBorder(),
               ),
               child: const Text(

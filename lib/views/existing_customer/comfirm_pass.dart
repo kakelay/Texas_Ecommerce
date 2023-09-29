@@ -1,3 +1,4 @@
+import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:flutter/material.dart';
 import '../../constants.dart';
 import '../home/home_screen.dart';
@@ -17,7 +18,7 @@ class _ComfirmPasswordPageState extends State<ComfirmPasswordPage> {
         leading: const BackButton(color: Colors.black),
         centerTitle: true,
         title: const Text(
-          "Comfirm Singin",
+          "Comfirm Password",
           style: TextStyle(color: Colors.black, fontSize: 30),
         ),
       ),
@@ -32,7 +33,7 @@ class _ComfirmPasswordPageState extends State<ComfirmPasswordPage> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Text(
-                      "Please Input Phone Number",
+                      "Please inout passsword",
                       style: TextStyle(fontSize: 20, color: Colors.black),
                     ),
                   ],
@@ -72,20 +73,49 @@ class _ComfirmPasswordPageState extends State<ComfirmPasswordPage> {
                 height: defaulHighSizeBox * 4,
               ),
               ElevatedButton(
+                // onPressed: () {
+                //   Navigator.push(
+                //     context,
+                //     MaterialPageRoute(
+                //         builder: (context) => const MyHomePage(title: "")),
+                //   );
+                // },
                 onPressed: () {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
                         builder: (context) => const MyHomePage(title: "")),
                   );
+                  final materialBanner = MaterialBanner(
+                    /// need to set following properties for best effect of awesome_snackbar_content
+                    elevation: 0,
+
+                    backgroundColor: Colors.transparent,
+                    forceActionsBelow: true,
+                    content: AwesomeSnackbarContent(
+                      title: 'Comfirm Successfully',
+                      message: 'Comfirm password successfully',
+
+                      /// change contentType to ContentType.success, ContentType.warning or ContentType.help for variants
+                      contentType: ContentType.success,
+                      // to configure for material banner
+                      inMaterialBanner: true,
+                    ),
+                    actions: const [SizedBox.shrink()],
+                  );
+
+                  ScaffoldMessenger.of(context)
+                    ..hideCurrentMaterialBanner()
+                    ..showMaterialBanner(materialBanner);
                 },
+
                 style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
                 child: const SizedBox(
                   width: 400,
                   height: 60,
                   child: Center(
                     child: Text(
-                      'SigIn',
+                      'submit',
                       style:
                           TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                     ),

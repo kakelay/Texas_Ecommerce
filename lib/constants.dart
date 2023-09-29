@@ -8,5 +8,5 @@ const double defaultPadding = 16.0;
 const double defaultBorderRadius = 12.0;
 const double defaulHighSizeBox = 16.0;
 
-List<ProductIstadData> cartProducts = [];
+// List<ProductIstadData> cartProducts = [];
 List<ProductIstadData> cartSavePro= [];

@@ -8,7 +8,6 @@ import 'package:istad_project_ecommerce/views/home/buttons_nav_bar_body/home_but
 import 'package:istad_project_ecommerce/views/home/buttons_nav_bar_body/personal_button.dart';
 import 'package:istad_project_ecommerce/views/home/buttons_nav_bar_body/qr_code_button.dart';
 import 'package:istad_project_ecommerce/views/home/buttons_nav_bar_body/notification_button.dart';
- 
 
 import 'widgets/drawer.dart';
 
@@ -23,11 +22,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _selectedIndex = 2;
-  // ignore: unused_field
-  // int _page = 0;
   final GlobalKey<CurvedNavigationBarState> _bottomNavigationKey = GlobalKey();
-
-  // ignore: unused_element
   void _navigateBottomBar(int index) {
     setState(
       () {
@@ -36,11 +31,9 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-  // ignore: unused_field
   final List<Widget> _pages = [
     const CartButton(),
-    // const SearchForm(),
-    const   QRViewExample(),
+    const QRViewExample(),
     const HomeButton(),
     const Notificationbutton(),
     const PersonalButton(),
@@ -110,9 +103,6 @@ class _MyHomePageState extends State<MyHomePage> {
         animationCurve: Curves.easeInOut,
         animationDuration: const Duration(milliseconds: 500),
         onTap: (index) {
-          // setState(() {
-          //   _page = index;
-          // });
           _navigateBottomBar(index);
         },
         letIndexChange: (index) => true,
@@ -126,6 +116,7 @@ class _MyHomePageState extends State<MyHomePage> {
               icon: const Icon(
                 Icons.menu,
                 color: Colors.black,
+                size: 28,
               ),
               onPressed: () {
                 Scaffold.of(context).openDrawer();
@@ -141,27 +132,6 @@ class _MyHomePageState extends State<MyHomePage> {
             color: Colors.black,
           ),
         ),
-        actions: [
-          // IconButton(
-          //   icon: CircleAvatar(
-          //     backgroundColor: Colors.white,
-          //     child: SvgPicture.asset(
-          //       "assets/icons/save.svg",
-          //       height: 20,
-          //     ),
-          //   ),
-          //   onPressed: () {
-          //     Navigator.push(
-          //       context,
-          //       MaterialPageRoute(
-          //         builder: (context) => const SaveCartScreen(),
-          //       ),
-          //     );
-          //   },
-          // ),
-
-          //more widgets to place here
-        ],
       ),
 
       // Body
@@ -179,5 +149,4 @@ class _MyHomePageState extends State<MyHomePage> {
       drawer: const DrawerPage(),
     );
   }
-  
 }

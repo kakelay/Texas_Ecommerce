@@ -41,7 +41,7 @@ class _QRViewExampleState extends State<QRViewExample> {
               // child: Text(code ?? "Click me"),
               child: Image.asset(
                 'assets/images/qrcode.png',
-                color: Colors.blueGrey,
+               // color: Colors.blueGrey,
               ),
             ),
           ),

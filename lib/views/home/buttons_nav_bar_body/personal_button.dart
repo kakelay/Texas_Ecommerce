@@ -1,3 +1,4 @@
+import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:flutter/material.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
@@ -116,15 +117,36 @@ class _PersonalButtonState extends State<PersonalButton> {
                     padding: const EdgeInsets.all(8.0),
                     child: ElevatedButton(
                       onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const MyHomePage(title: ""),
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const MyHomePage(title: "")),
+                          );
+                        final materialBanner = MaterialBanner(
+                          /// need to set following properties for best effect of awesome_snackbar_content
+                          elevation: 0,
+
+                          backgroundColor: Colors.transparent,
+                          forceActionsBelow: true,
+                          content: AwesomeSnackbarContent(
+                            title: 'Login Successfully',
+                            message:
+                                'You have been login successfully with this app.',
+
+                            /// change contentType to ContentType.success, ContentType.warning or ContentType.help for variants
+                            contentType: ContentType.success,
+                            // to configure for material banner
+                            inMaterialBanner: true,
                           ),
+                          actions: const [SizedBox.shrink()],
                         );
+
+                        ScaffoldMessenger.of(context)
+                          ..hideCurrentMaterialBanner()
+                          ..showMaterialBanner(materialBanner);
                       },
-                      style:
-                          ElevatedButton.styleFrom(backgroundColor: Colors.black),
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.black),
                       child: const SizedBox(
                         width: 400,
                         height: 60,
@@ -132,7 +154,9 @@ class _PersonalButtonState extends State<PersonalButton> {
                           child: Text(
                             'LOG IN',
                             style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 20),
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20,
+                            ),
                           ),
                         ),
                       ),
@@ -187,20 +211,23 @@ class _PersonalButtonState extends State<PersonalButton> {
                     ),
                   ),
                   const SizedBox(
-                    height: defaulHighSizeBox/2,
+                    height: defaulHighSizeBox / 2,
                   ),
                   TextButton(
                     onPressed: () {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const ContactUsPage()),
+                          builder: (context) => const ContactUsPage(),
+                        ),
                       );
                     },
                     child: const Text(
                       'Contact us',
                       style: TextStyle(
-                          color: Colors.black, fontWeight: FontWeight.bold),
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                 ],
@@ -228,12 +255,9 @@ class _PersonalButtonState extends State<PersonalButton> {
   }
 }
 
-
- 
 // import 'package:flutter/material.dart';
 // import 'package:flutter_login/flutter_login.dart';
 // import 'package:istad_project_ecommerce/views/home/home_screen.dart';
- 
 
 // const users = {
 //   'kakelay@gmail.com': '12345',

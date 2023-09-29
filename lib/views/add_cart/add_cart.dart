@@ -274,13 +274,13 @@ class _AddCartScreenState extends State<AddCartScreen> {
             const SizedBox(
               height: defaulHighSizeBox * 2,
             ),
-            Text(
-              "Total Amount  :  ${totalAmount} -\$",
-              style: const TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black),
-            ),
+            // Text(
+            //   "Total Amount  :  ${totalAmount} -\$",
+            //   style: const TextStyle(
+            //       fontSize: 18,
+            //       fontWeight: FontWeight.bold,
+            //       color: Colors.black),
+            // ),
             Text(
               "Total Product  :     ${cartSavePro.length}\n",
               style: const TextStyle(
@@ -302,8 +302,8 @@ class _AddCartScreenState extends State<AddCartScreen> {
                   );
                 },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: primaryColor,
-                  shape: const StadiumBorder(),
+                  backgroundColor: Colors.black,
+                  // shape: const StadiumBorder(),
                 ),
                 child: const Text(
                   "Order All Product",
