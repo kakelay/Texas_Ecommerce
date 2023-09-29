@@ -63,6 +63,7 @@ dependencies:
   url_launcher: ^6.1.14
   flutter_settings_ui: ^2.0.1
   shimmer: ^3.0.0
+  flutter_native_splash: ^2.3.2
   
  
 
