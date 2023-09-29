@@ -248,7 +248,7 @@ class AllProdcutList extends StatelessWidget {
           Expanded(
             child: Container(
               decoration: BoxDecoration(
-                color: Colors.amber,
+              //  color: Colors.amber,
                 borderRadius: const BorderRadius.all(Radius.circular(4)),
                 image: DecorationImage(
                   image: NetworkImage(

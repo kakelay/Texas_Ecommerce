@@ -1,76 +1,3 @@
-// import 'package:flutter/material.dart';
-
-// import '../../../constants.dart';
-// import '../../../models/response/product_card.dart';
-// import '../../details/details_screen.dart';
-// import 'product_card.dart';
-// import 'section_title.dart';
-
-// // ignore: must_be_immutable
-// class NewArrivalProducts extends StatelessWidget {
-//   NewArrivalProducts({Key? key, this.arrivalProducts}) : super(key: key);
-
-//   ProductIstad? arrivalProducts;
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Column(
-//       children: [
-//         Padding(
-//           padding: const EdgeInsets.symmetric(vertical: defaultPadding),
-//           child: SectionTitle(
-//             title: "New Arrival",
-//             pressSeeAll: () {},
-//           ),
-//         ),
-//         SingleChildScrollView(
-//           physics: const BouncingScrollPhysics(
-//               parent: AlwaysScrollableScrollPhysics()),
-//           scrollDirection: Axis.horizontal,
-//           child: Row(
-//             children: [
-//               ListView.builder(
-//                 itemCount: arrivalProducts!.data.length,
-//                 itemBuilder: ((builder, index) {
-//                   print("Productcard have data");
-//                   return ProductCard(
-//                       data: arrivalProducts!.data[index],
-//                       press: () {
-//                         Navigator.push(
-//                           context,
-//                           MaterialPageRoute(
-//                             builder: (context) => DetailsScreen(
-//                                 product: arrivalProducts!.data[index]),
-//                           ),
-//                         );
-//                       });
-//                 }),
-//               ),
-//             ],
-//             // children: List.generate(
-//             //   arrivalProducts.length!,
-//             //   (index) => Padding(
-//             //     padding: const EdgeInsets.only(right: defaultPadding),
-//             //     child: ProductCard(
-//             //       data: ProductIstadData(id: id, attributes: attributes),
-//             //       press: () {
-//             //         Navigator.push(
-//             //             context,
-//             //             MaterialPageRoute(
-//             //               builder: (context) =>
-//             //                   DetailsScreen(product: demo_product[index]),
-//             //             ));
-//             //       },
-//             //     ),
-//             //   ),
-//             // ),
-//           ),
-//         )
-//       ],
-//     );
-//   }
-// }
-
 // ignore: must_be_immutable
 
 import 'package:flutter/material.dart';
@@ -78,6 +5,7 @@ import 'package:istad_project_ecommerce/models/response/product_card.dart';
 import 'package:istad_project_ecommerce/views/all_product/all_product.dart';
 import 'package:istad_project_ecommerce/views/details/details_screen.dart';
 import 'package:provider/provider.dart';
+import 'package:shimmer/shimmer.dart';
 
 import '../../../constants.dart';
 import '../../../data/response/status.dart';
@@ -130,18 +58,70 @@ class _NewArrivalProductsState extends State<NewArrivalProducts> {
             builder: ((context, value, child) {
               switch (value.productistads.status) {
                 case Status.LOADING:
-                  print(
-                      "  loadig------------------------------------------------------------loading-------------------------------------------------------- ");
-                  return const Center(
-                    child: CircularProgressIndicator(
-                      color: Colors.redAccent,
+                  return Shimmer.fromColors(
+                    baseColor: Colors.grey[300]!,
+                    highlightColor: Colors.grey[100]!,
+                    child: Container(
+                      height: 430,
+                      child: ListView.builder(
+                          itemCount: 4,
+                          scrollDirection: Axis.horizontal,
+                          itemBuilder: (context, index) {
+                            return Container(
+                              width: 260,
+                              padding: const EdgeInsets.all(defaultPadding / 2),
+                              decoration: const BoxDecoration(
+                                borderRadius: BorderRadius.all(
+                                    Radius.circular(defaultBorderRadius)),
+                              ),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Container(
+                                      width: 260,
+                                      height: 350,
+                                      decoration: const BoxDecoration(
+                                        color: bgColor,
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(0)),
+                                      ),
+                                      child: Container()),
+                                  const SizedBox(height: defaultPadding / 2),
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Container(
+                                        width: 100,
+                                        height: 20,
+                                        color: Colors.grey,
+                                      ),
+                                      Container(
+                                        width: 100,
+                                        height: 20,
+                                        color: Colors.grey,
+                                      ),
+                                    ],
+                                  ),
+                                  const SizedBox(
+                                    height: 10,
+                                  ),
+                                  Container(
+                                    width: 100,
+                                    height: 20,
+                                    color: Colors.grey,
+                                  ),
+                                ],
+                              ),
+                            );
+                          }),
                     ),
                   );
                 case Status.COMPLETE:
                   print(" print completed-------11----------");
 
                   return Container(
-                    
                     height: 450,
                     width: 500,
                     child: ListView.builder(

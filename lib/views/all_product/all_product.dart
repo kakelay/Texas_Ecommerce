@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:istad_project_ecommerce/models/response/product_card.dart';
 import 'package:istad_project_ecommerce/views/all_product/widgets/all_product_list.dart';
 import 'package:provider/provider.dart';
+import 'package:shimmer/shimmer.dart';
 
 import '../../data/response/status.dart';
 import '../../viewmodels/product_viewmodel.dart';
@@ -110,8 +111,58 @@ class _AllProductState extends State<AllProduct> {
             builder: (context, value, child) {
               switch (value.productistads.status) {
                 case Status.LOADING:
-                  return const Center(
-                    child: CircularProgressIndicator(),
+                  return Shimmer.fromColors(
+                    baseColor: Colors
+                        .grey[350]!, // You can change these colors as needed
+                    highlightColor: Colors.grey[100]!,
+                    child: GridView.builder(
+                      scrollDirection: Axis.vertical,
+                      itemCount: 20,
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        crossAxisSpacing: 2.0,
+                        mainAxisSpacing: 2.0,
+                      ),
+                      itemBuilder: (BuildContext context, index) {
+                        return Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Expanded(
+                              child: Container(
+                                // width: 200,
+                                // height: 200,
+                                decoration: BoxDecoration(
+                                  color: Colors.grey.shade100,
+                                  borderRadius: const BorderRadius.all(
+                                      Radius.circular(4)),
+                                  shape: BoxShape.rectangle,
+                                ),
+                              ),
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                Container(
+                                  color: Colors.white,
+                                  width: 50,
+                                  height: 50,
+                                )
+                              ],
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Expanded(
+                                    child: Container(
+                                  color: Colors.white,
+                                )),
+                              ],
+                            ),
+                          ],
+                        );
+                      },
+                    ),
                   );
                 case Status.COMPLETE:
                   return GridView.builder(
