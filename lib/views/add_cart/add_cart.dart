@@ -281,35 +281,45 @@ class _AddCartScreenState extends State<AddCartScreen> {
             //       fontWeight: FontWeight.bold,
             //       color: Colors.black),
             // ),
-            Text(
-              "Total Product  :     ${cartSavePro.length}\n",
-              style: const TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  "Total Product  :     ${cartSavePro.length}\n",
+                  style: const TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black),
+                ),
+              ],
             ),
             const SizedBox(
               height: defaulHighSizeBox * 2,
             ),
-            SizedBox(
-              height: 60,
-              width: 250,
-              child: ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => OrderProductPage()),
-                  );
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.black,
-                  // shape: const StadiumBorder(),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(
+                  height: 60,
+                  width: 250,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => OrderProductPage()),
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.black,
+                      // shape: const StadiumBorder(),
+                    ),
+                    child: const Text(
+                      "Order All Product",
+                      style: TextStyle(fontSize: 20),
+                    ),
+                  ),
                 ),
-                child: const Text(
-                  "Order All Product",
-                  style: TextStyle(fontSize: 20),
-                ),
-              ),
+              ],
             ),
           ],
         ),

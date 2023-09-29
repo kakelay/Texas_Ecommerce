@@ -126,19 +126,7 @@ class DrawerPage extends StatelessWidget {
               );
             },
           ),
-          ListTile(
-            leading: const Icon(
-              Icons.add_location_outlined,
-              color: Colors.black,
-            ),
-            title: const Text(
-              'Texas Partner',
-              style: TextStyle(color: Colors.black),
-            ),
-            onTap: () {
-              Navigator.pop(context);
-            },
-          ),
+         
           ListTile(
             leading: const Icon(
               Icons.phone_in_talk,
